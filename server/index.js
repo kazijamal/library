@@ -4,6 +4,9 @@ const cors = require("cors");
 const app = express();
 
 const userRoutes = require("./routes/users");
+const finishedBookRoutes = require("./routes/finishedbooks");
+const readingBookRoutes = require("./routes/readingbooks");
+const highlightRoutes = require("./routes/highlights");
 
 app.use(cors());
 app.use(express.json());
@@ -16,6 +19,9 @@ app.get("/", (req, res) => {
 
 // Use routes imported from routes directory
 app.use("/users", userRoutes);
+app.use("/finishedbooks", finishedBookRoutes);
+app.use("/readingbooks", readingBookRoutes);
+app.use("/highlights", highlightRoutes);
 
 // Not found errors for undefined routes
 app.use((req, res, next) => {
