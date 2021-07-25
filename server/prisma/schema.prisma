@@ -10,14 +10,31 @@ generator client {
   provider = "prisma-client-js"
 }
 
-model FinishedBook {
-  id        Int      @default(autoincrement()) @id
-  createdAt DateTime @default(now())
-  title     String   @db.VarChar(255)
-}
-
 model User {
   id        Int      @default(autoincrement()) @id
   username  String   @unique
   password  String
+}
+
+model FinishedBook {
+  id            Int         @default(autoincrement()) @id
+  createdAt     DateTime    @default(now())
+  title         String
+  highlights    Highlight[]
+}
+
+model ReadingBook {
+  id        Int      @default(autoincrement()) @id
+  createdAt DateTime @default(now())
+  title     String
+}
+
+model Highlight {
+  id                Int             @default(autoincrement()) @id
+  finishedBook      FinishedBook    @relation(fields: [finishedBookId], references: [id])
+  finishedBookId    Int
+  sectionHeading    String
+  noteHeading       String
+  location          Int
+  noteText          String
 }
