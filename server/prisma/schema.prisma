@@ -33,8 +33,7 @@ model Highlight {
   id                Int             @default(autoincrement()) @id
   finishedBook      FinishedBook    @relation(fields: [finishedBookId], references: [id])
   finishedBookId    Int
-  sectionHeading    String
-  noteHeading       String
+  color             String
+  content           String
   location          Int
-  noteText          String
 }
