@@ -17,6 +17,9 @@ app.get("/", (req, res) => {
 	res.json({ message: "Welcome to the Library API" });
 });
 
+// Use static routes
+app.use("/uploads", express.static("./uploads"));
+
 // Use routes imported from routes directory
 app.use("/users", userRoutes);
 app.use("/finishedbooks", finishedBookRoutes);
