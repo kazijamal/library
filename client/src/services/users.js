@@ -5,7 +5,7 @@ export async function loginUser(credentials) {
 		url: "/api/users/login",
 		method: "post",
 		headers: { "Content-Type": "application/json" },
-		body: JSON.stringify(credentials),
+		data: credentials,
 	})
 		.then((res) => res.data)
 		.catch((err) => console.error(err));
