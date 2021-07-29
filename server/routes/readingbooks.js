@@ -36,12 +36,12 @@ router.patch("/markfinished/:id", async (req, res) => {
 // create new reading book
 router.post("/", async (req, res) => {
 	const { title } = req.body;
-	const result = await prisma.readingBook.create({
+	const readingBook = await prisma.readingBook.create({
 		data: {
 			title: title,
 		},
 	});
-	res.json(result);
+	res.json(readingBook);
 });
 
 // delete reading book with id

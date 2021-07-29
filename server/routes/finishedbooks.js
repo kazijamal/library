@@ -20,12 +20,12 @@ router.get("/:id", async (req, res) => {
 // create new finished book
 router.post("/", async (req, res) => {
 	const { title } = req.body;
-	const result = await prisma.finishedBook.create({
+	const finishedBook = await prisma.finishedBook.create({
 		data: {
 			title: title,
 		},
 	});
-	res.json(result);
+	res.json(finishedBook);
 });
 
 // delete finished book with id
