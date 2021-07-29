@@ -9,7 +9,7 @@ const HighlightsForm = () => {
 		const form_data = new FormData(formRef.current);
 
 		axios({
-			url: "http://localhost:3030/highlights/upload",
+			url: "/api/highlights/upload",
 			method: "post",
 			headers: { "Content-Type": "multipart/form-data" },
 			data: form_data,

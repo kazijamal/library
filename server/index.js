@@ -14,17 +14,14 @@ app.use(express.urlencoded({ extended: true }));
 
 // Root route
 app.get("/", (req, res) => {
-	res.json({ message: "Welcome to the Library API" });
+	res.json({ message: "Welcome to the Library API, access routes at /api" });
 });
 
-// Use static routes
-app.use("/uploads", express.static("./uploads"));
-
 // Use routes imported from routes directory
-app.use("/users", userRoutes);
-app.use("/finishedbooks", finishedBookRoutes);
-app.use("/readingbooks", readingBookRoutes);
-app.use("/highlights", highlightRoutes);
+app.use("/api/users", userRoutes);
+app.use("/api/finishedbooks", finishedBookRoutes);
+app.use("/api/readingbooks", readingBookRoutes);
+app.use("/api/highlights", highlightRoutes);
 
 // Not found errors for undefined routes
 app.use((req, res, next) => {

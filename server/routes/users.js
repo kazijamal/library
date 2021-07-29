@@ -7,4 +7,11 @@ router.get("/", async (req, res) => {
 	res.json(users);
 });
 
+router.post("/login", async (req, res) => {
+	const token = {
+		token: "test123",
+	};
+	res.json(token);
+});
+
 module.exports = router;
