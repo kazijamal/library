@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import PropTypes from "prop-types";
 import "./Login.css";
 import { loginUser } from "../../services/users";
+import useToken from "../../utils/useToken";
 
-function Login({ setToken }) {
+function Login() {
 	const [username, setUsername] = useState();
 	const [password, setPassword] = useState();
+	const { token, setToken } = useToken();
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
@@ -16,6 +17,10 @@ function Login({ setToken }) {
 		const token = await loginUser(credentials);
 		setToken(token);
 	};
+
+	if (token) {
+		window.location.pathname = "/dashboard";
+	}
 
 	return (
 		<div className="login-wrapper">
@@ -39,9 +44,5 @@ function Login({ setToken }) {
 		</div>
 	);
 }
-
-Login.propTypes = {
-	setToken: PropTypes.func.isRequired,
-};
 
 export default Login;
