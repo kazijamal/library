@@ -1,8 +1,8 @@
 import axios from "axios";
 
-export function loginUser(credentials) {
+export function getFinishedBooks() {
 	return axios
-		.post("/api/users/login", credentials)
+		.get("/api/finishedbooks")
 		.then(function (res) {
 			return res.data;
 		})

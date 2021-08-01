@@ -8,14 +8,15 @@ function Login() {
 	const [password, setPassword] = useState();
 	const { token, setToken } = useToken();
 
-	const handleSubmit = async (e) => {
+	const handleSubmit = (e) => {
 		e.preventDefault();
 		const credentials = {
 			username,
 			password,
 		};
-		const token = await loginUser(credentials);
-		setToken(token);
+		loginUser(credentials).then((token) => {
+			setToken(token);
+		});
 	};
 
 	if (token) {
