@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { uploadHighlights } from "../../services/highlights";
+import { uploadHighlights } from "../../../services/highlights";
 
 const HighlightsForm = () => {
 	const formRef = useRef(null);

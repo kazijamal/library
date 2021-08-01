@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getFinishedBook } from "../../services/finishedBooks";
+import {
+	getFinishedBook,
+	deleteFinishedBook,
+} from "../../services/finishedBooks";
+import HighlightsForm from "../../components/Dashboard/HighlightsForm/HighlightsForm";
 
 function EditFinishedBook() {
 	const { id } = useParams();
@@ -16,6 +20,11 @@ function EditFinishedBook() {
 		return () => (mounted = false);
 	}, [id]);
 
+	const handleDeleteFinishedBook = async (id) => {
+		await deleteFinishedBook(id);
+		window.location.pathname = "/dashboard";
+	};
+
 	if (!finishedBook) {
 		return <p>Loading</p>;
 	}
@@ -23,6 +32,10 @@ function EditFinishedBook() {
 	return (
 		<div>
 			<h2>Editing {finishedBook.title}</h2>
+			<HighlightsForm />
+			<button onClick={() => handleDeleteFinishedBook(finishedBook.id)}>
+				Delete Finished Book
+			</button>
 		</div>
 	);
 }

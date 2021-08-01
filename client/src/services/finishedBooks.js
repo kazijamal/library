@@ -21,3 +21,14 @@ export async function getFinishedBook(id) {
 			console.log(err);
 		});
 }
+
+export async function deleteFinishedBook(id) {
+	axios
+		.delete(`/api/finishedbooks/${id}`)
+		.then(function (res) {
+			console.log(res);
+		})
+		.catch(function (err) {
+			console.log(err);
+		});
+}
