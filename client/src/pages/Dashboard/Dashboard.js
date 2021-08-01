@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import {
 	getReadingBooks,
 	markReadingBookFinished,
@@ -97,7 +98,14 @@ function Dashboard() {
 			<h3>Finished Books</h3>
 			<ul>
 				{finishedBooks.map((finishedBook) => (
-					<li key={finishedBook.id}>{finishedBook.title}</li>
+					<div key={finishedBook.id}>
+						<li>
+							{finishedBook.title}
+							<Link to={`/dashboard/finishedbooks/edit/${finishedBook.id}`}>
+								Edit
+							</Link>
+						</li>
+					</div>
 				))}
 			</ul>
 		</div>

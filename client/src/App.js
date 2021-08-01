@@ -5,6 +5,7 @@ import Home from "./pages/Home/Home";
 import Login from "./pages/Login/Login";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Dashboard from "./pages/Dashboard/Dashboard";
+import EditFinishedBook from "./pages/EditFinishedBook/EditFinishedBook";
 
 function App() {
 	return (
@@ -14,6 +15,10 @@ function App() {
 				<Route exact path="/" component={Home} />
 				<Route exact path="/login" component={Login} />
 				<ProtectedRoute exact path="/dashboard" component={Dashboard} />
+				<ProtectedRoute
+					path="/dashboard/finishedbooks/edit/:id"
+					component={EditFinishedBook}
+				/>
 			</BrowserRouter>
 		</div>
 	);

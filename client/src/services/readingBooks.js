@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export function getReadingBooks() {
+export async function getReadingBooks() {
 	return axios
 		.get("/api/readingbooks")
 		.then(function (res) {
