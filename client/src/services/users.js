@@ -1,12 +1,12 @@
 import axios from "axios";
 
 export async function loginUser(credentials) {
-	return axios({
-		url: "/api/users/login",
-		method: "post",
-		headers: { "Content-Type": "application/json" },
-		data: credentials,
-	})
-		.then((res) => res.data)
-		.catch((err) => console.error(err));
+	return axios
+		.post("/api/users/login", credentials)
+		.then(function (res) {
+			return res.data;
+		})
+		.catch(function (err) {
+			console.log(err);
+		});
 }
