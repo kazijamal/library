@@ -32,3 +32,14 @@ export async function deleteReadingBook(id) {
 			console.log(err);
 		});
 }
+
+export async function createReadingBook(title) {
+	axios
+		.post("/api/readingbooks", { title })
+		.then(function (res) {
+			console.log(res);
+		})
+		.catch(function (err) {
+			console.log(err);
+		});
+}

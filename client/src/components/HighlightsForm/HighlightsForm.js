@@ -5,9 +5,7 @@ const HighlightsForm = () => {
 	const formRef = useRef(null);
 	const submit_file = async (e) => {
 		e.preventDefault();
-
 		const form_data = new FormData(formRef.current);
-
 		await uploadHighlights(form_data);
 	};
 
