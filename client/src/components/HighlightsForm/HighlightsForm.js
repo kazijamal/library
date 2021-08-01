@@ -1,21 +1,14 @@
 import React, { useRef } from "react";
-import axios from "axios";
+import { uploadHighlights } from "../../services/highlights";
 
 const HighlightsForm = () => {
 	const formRef = useRef(null);
-	const submit_file = (e) => {
+	const submit_file = async (e) => {
 		e.preventDefault();
 
 		const form_data = new FormData(formRef.current);
 
-		axios({
-			url: "/api/highlights/upload",
-			method: "post",
-			headers: { "Content-Type": "multipart/form-data" },
-			data: form_data,
-		})
-			.then((res) => console.log(res))
-			.catch((err) => console.error(err));
+		await uploadHighlights(form_data);
 	};
 
 	return (
