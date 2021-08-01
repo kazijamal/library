@@ -10,3 +10,25 @@ export function getReadingBooks() {
 			console.log(err);
 		});
 }
+
+export async function markReadingBookFinished(id) {
+	axios
+		.patch(`/api/readingbooks/markfinished/${id}`)
+		.then(function (res) {
+			console.log(res);
+		})
+		.catch(function (err) {
+			console.log(err);
+		});
+}
+
+export async function deleteReadingBook(id) {
+	axios
+		.delete(`/api/readingbooks/${id}`)
+		.then(function (res) {
+			console.log(res);
+		})
+		.catch(function (err) {
+			console.log(err);
+		});
+}

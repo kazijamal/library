@@ -7,12 +7,18 @@ function Home() {
 	const [finishedBooks, setFinishedBooks] = useState([]);
 
 	useEffect(() => {
+		let mounted = true;
 		getReadingBooks().then((retrievedReadingBooks) => {
-			setReadingBooks(retrievedReadingBooks);
+			if (mounted) {
+				setReadingBooks(retrievedReadingBooks);
+			}
 		});
 		getFinishedBooks().then((retrievedFinishedBooks) => {
-			setFinishedBooks(retrievedFinishedBooks);
+			if (mounted) {
+				setFinishedBooks(retrievedFinishedBooks);
+			}
 		});
+		return () => (mounted = false);
 	}, []);
 
 	return (
