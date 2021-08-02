@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { getReadingBooks } from "../../services/readingBooks";
 import { getFinishedBooks } from "../../services/finishedBooks";
 
@@ -34,7 +35,11 @@ function Home() {
 			<h3>Finished Books</h3>
 			<ul>
 				{finishedBooks.map((finishedBook) => (
-					<li key={finishedBook.id}>{finishedBook.title}</li>
+					<li key={finishedBook.id}>
+						<Link to={`/finishedbooks/${finishedBook.id}`}>
+							{finishedBook.title}
+						</Link>
+					</li>
 				))}
 			</ul>
 		</div>
