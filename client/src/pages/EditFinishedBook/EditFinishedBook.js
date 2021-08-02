@@ -58,7 +58,10 @@ function EditFinishedBook() {
 				<ul>
 					{highlights.map((highlight) => (
 						<li key={highlight.id}>
-							{highlight.content} (Location: {highlight.location})
+							<span style={{ backgroundColor: highlight.color }}>
+								{highlight.content}
+							</span>{" "}
+							(Location: {highlight.location})
 						</li>
 					))}
 				</ul>

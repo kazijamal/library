@@ -11,7 +11,7 @@ import EditFinishedBook from "./pages/EditFinishedBook/EditFinishedBook";
 function App() {
 	return (
 		<div className="wrapper">
-			<h1>Application</h1>
+			<h1>Library</h1>
 			<BrowserRouter>
 				<Route exact path="/" component={Home} />
 				<Route exact path="/login" component={Login} />
