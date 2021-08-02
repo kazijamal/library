@@ -12,3 +12,14 @@ export async function uploadHighlights(form_data) {
 			console.log(err);
 		});
 }
+
+export async function getFinishedBookHighlights(finishedBookId) {
+	axios
+		.get(`/api/highlights/finishedbook/${finishedBookId}`)
+		.then(function (res) {
+			return res.data;
+		})
+		.catch(function (err) {
+			console.log(err);
+		});
+}

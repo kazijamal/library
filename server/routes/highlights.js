@@ -22,12 +22,13 @@ router.get("/:id", async (req, res) => {
 	res.json(highlight);
 });
 
-// get highlights for finished book with id
+// get highlights for finished book with finishedBookId
 router.get("/finishedbook/:finishedBookId", async (req, res) => {
 	const { finishedBookId } = req.params;
 	const highlights = await prisma.highlight.findMany({
 		where: { finishedBookId: Number(finishedBookId) },
 	});
+	res.json(highlights);
 });
 
 // upload highlights for a finished book

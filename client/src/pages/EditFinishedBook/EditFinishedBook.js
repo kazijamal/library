@@ -4,6 +4,7 @@ import {
 	getFinishedBook,
 	deleteFinishedBook,
 } from "../../services/finishedBooks";
+import { getFinishedBookHighlights } from "../../services/highlights";
 import HighlightsForm from "../../components/Dashboard/HighlightsForm/HighlightsForm";
 
 function EditFinishedBook() {
