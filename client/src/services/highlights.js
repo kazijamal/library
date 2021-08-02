@@ -14,7 +14,7 @@ export async function uploadHighlights(form_data) {
 }
 
 export async function getFinishedBookHighlights(finishedBookId) {
-	axios
+	return axios
 		.get(`/api/highlights/finishedbook/${finishedBookId}`)
 		.then(function (res) {
 			return res.data;

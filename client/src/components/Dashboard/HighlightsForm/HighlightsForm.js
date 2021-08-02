@@ -7,6 +7,7 @@ const HighlightsForm = (props) => {
 		e.preventDefault();
 		const form_data = new FormData(formRef.current);
 		await uploadHighlights(form_data);
+		props.setAlert(true);
 	};
 
 	return (
