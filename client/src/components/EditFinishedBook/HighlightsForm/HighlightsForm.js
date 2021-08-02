@@ -1,13 +1,15 @@
 import React, { useRef } from "react";
 import { uploadHighlights } from "../../../services/highlights";
 
-const HighlightsForm = (props) => {
+function HighlightsForm(props) {
+	const { setAlert } = props;
 	const formRef = useRef(null);
+
 	const submit_file = async (e) => {
 		e.preventDefault();
 		const form_data = new FormData(formRef.current);
 		await uploadHighlights(form_data);
-		props.setAlert(true);
+		setAlert(true);
 	};
 
 	return (
@@ -23,6 +25,6 @@ const HighlightsForm = (props) => {
 			<input type="submit" value="Submit" />
 		</form>
 	);
-};
+}
 
 export default HighlightsForm;
