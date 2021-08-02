@@ -1,47 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import { getReadingBooks } from "../../services/readingBooks";
-import { getFinishedBooks } from "../../services/finishedBooks";
+import ReadingBookList from "../../components/Home/ReadingBookList/ReadingBookList";
+import FinishedBookList from "../../components/Home/FinishedBookList/FinishedBookList";
 
 function Home() {
-	const [readingBooks, setReadingBooks] = useState([]);
-	const [finishedBooks, setFinishedBooks] = useState([]);
-
-	useEffect(() => {
-		let mounted = true;
-		getReadingBooks().then((retrievedReadingBooks) => {
-			if (mounted) {
-				setReadingBooks(retrievedReadingBooks);
-			}
-		});
-		getFinishedBooks().then((retrievedFinishedBooks) => {
-			if (mounted) {
-				setFinishedBooks(retrievedFinishedBooks);
-			}
-		});
-		return () => (mounted = false);
-	}, []);
-
 	return (
 		<div>
 			<h2>Home</h2>
-			<a href="/login">Log In</a>
-			<h3>Reading Books</h3>
-			<ul>
-				{readingBooks.map((readingBook) => (
-					<li key={readingBook.id}>{readingBook.title}</li>
-				))}
-			</ul>
-			<h3>Finished Books</h3>
-			<ul>
-				{finishedBooks.map((finishedBook) => (
-					<li key={finishedBook.id}>
-						<Link to={`/finishedbooks/${finishedBook.id}`}>
-							{finishedBook.title}
-						</Link>
-					</li>
-				))}
-			</ul>
+			<Link to="/login">Log In</Link>
+			<ReadingBookList />
+			<FinishedBookList />
 		</div>
 	);
 }
