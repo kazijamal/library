@@ -27,6 +27,7 @@ router.post("/upload", upload.single("highlights-file"), async (req, res) => {
 	await prisma.highlight.createMany({
 		data: data,
 	});
+	res.json(finishedBookId);
 });
 
 module.exports = router;
