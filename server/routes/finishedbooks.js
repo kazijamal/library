@@ -31,6 +31,11 @@ router.post("/", async (req, res) => {
 // delete finished book with id
 router.delete("/:id", async (req, res) => {
 	const { id } = req.params;
+	await prisma.highlight.deleteMany({
+		where: {
+			finishedBookId: Number(id),
+		},
+	});
 	const finishedBook = await prisma.finishedBook.delete({
 		where: {
 			id: Number(id),
