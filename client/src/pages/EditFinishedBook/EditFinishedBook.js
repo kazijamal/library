@@ -5,7 +5,7 @@ import {
 	deleteFinishedBook,
 } from "../../services/finishedBooks";
 import { getFinishedBookHighlights } from "../../services/highlights";
-import HighlightsForm from "../../components/Dashboard/HighlightsForm/HighlightsForm";
+import HighlightsForm from "../../components/EditFinishedBook/HighlightsForm/HighlightsForm";
 
 function EditFinishedBook() {
 	const [alert, setAlert] = useState(false);
@@ -35,7 +35,7 @@ function EditFinishedBook() {
 		if (alert) {
 			setTimeout(() => {
 				setAlert(false);
-			}, 3000);
+			}, 1000);
 		}
 	}, [alert]);
 

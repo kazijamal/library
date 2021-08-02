@@ -1,46 +1,17 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import {
-	getReadingBooks,
-	markReadingBookFinished,
-	deleteReadingBook,
-	createReadingBook,
-} from "../../services/readingBooks";
-import {
-	createFinishedBook,
-	getFinishedBooks,
-} from "../../services/finishedBooks";
+import React, { useState, useEffect } from "react";
+import ReadingBookList from "../../components/Dashboard/ReadingBookList/ReadingBookList";
+import NewReadingBookForm from "../../components/Dashboard/NewReadingBookForm/NewReadingBookForm";
+import FinishedBookList from "../../components/Dashboard/FinishedBookList/FinishedBookList";
+import NewFinishedBookForm from "../../components/Dashboard/NewFinishedBookForm/NewFinishedBookForm";
 
 function Dashboard() {
 	const [alert, setAlert] = useState(false);
-	const [readingBooks, setReadingBooks] = useState([]);
-	const [finishedBooks, setFinishedBooks] = useState([]);
-	const [readingBookTitleInput, setReadingBookTitleInput] = useState("");
-	const [finishedBookTitleInput, setFinishedBookTitleInput] = useState("");
-
-	useEffect(() => {
-		let mounted = true;
-		if (readingBooks.length && finishedBooks.length && !alert) {
-			return;
-		}
-		getReadingBooks().then((retrievedReadingBooks) => {
-			if (mounted) {
-				setReadingBooks(retrievedReadingBooks);
-			}
-		});
-		getFinishedBooks().then((retrievedFinishedBooks) => {
-			if (mounted) {
-				setFinishedBooks(retrievedFinishedBooks);
-			}
-		});
-		return () => (mounted = false);
-	}, [alert, readingBooks, finishedBooks]);
 
 	useEffect(() => {
 		if (alert) {
 			setTimeout(() => {
 				setAlert(false);
-			}, 3000);
+			}, 1000);
 		}
 	}, [alert]);
 
@@ -49,86 +20,15 @@ function Dashboard() {
 		window.location.pathname = "/";
 	};
 
-	const handleMarkReadingBookFinished = async (id) => {
-		await markReadingBookFinished(id);
-		setAlert(true);
-	};
-
-	const handleDeleteReadingBook = async (id) => {
-		await deleteReadingBook(id);
-		setAlert(true);
-	};
-
-	const handleNewReadingBookSubmit = async (e) => {
-		e.preventDefault();
-		await createReadingBook(readingBookTitleInput);
-		setAlert(true);
-	};
-
-	const handleNewFinishedBookSubmit = async (e) => {
-		e.preventDefault();
-		await createFinishedBook(finishedBookTitleInput);
-		setAlert(true);
-	};
-
 	return (
 		<div>
 			<h2>Dashboard</h2>
 			<button onClick={handleLogout}>Log Out</button>
 			{alert && <h3>Action completed successfully</h3>}
-			<h3>Reading Books</h3>
-			<ul>
-				{readingBooks.map((readingBook) => (
-					<div key={readingBook.id}>
-						<li>
-							{readingBook.title}
-							<button
-								onClick={() => handleMarkReadingBookFinished(readingBook.id)}
-							>
-								Mark Finished
-							</button>
-							<button onClick={() => handleDeleteReadingBook(readingBook.id)}>
-								Delete
-							</button>
-						</li>
-					</div>
-				))}
-			</ul>
-			<form onSubmit={handleNewReadingBookSubmit}>
-				<label>
-					<p>New Reading Book</p>
-					<input
-						type="text"
-						onChange={(e) => setReadingBookTitleInput(e.target.value)}
-						value={readingBookTitleInput}
-					/>
-				</label>
-				<button type="submit">Submit</button>
-			</form>
-			<h3>Finished Books</h3>
-			<ul>
-				{finishedBooks.map((finishedBook) => (
-					<div key={finishedBook.id}>
-						<li>
-							{finishedBook.title}
-							<Link to={`/dashboard/finishedbooks/edit/${finishedBook.id}`}>
-								Edit
-							</Link>
-						</li>
-					</div>
-				))}
-			</ul>
-			<form onSubmit={handleNewFinishedBookSubmit}>
-				<label>
-					<p>New Finished Book</p>
-					<input
-						type="text"
-						onChange={(e) => setFinishedBookTitleInput(e.target.value)}
-						value={finishedBookTitleInput}
-					/>
-				</label>
-				<button type="submit">Submit</button>
-			</form>
+			<ReadingBookList alert={alert} setAlert={setAlert} />
+			<NewReadingBookForm setAlert={setAlert} />
+			<FinishedBookList alert={alert} setAlert={setAlert} />
+			<NewFinishedBookForm setAlert={setAlert} />
 		</div>
 	);
 }
