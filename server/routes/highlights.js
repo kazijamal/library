@@ -14,7 +14,19 @@ router.get("/", async (req, res) => {
 
 router.post("/upload", upload.single("highlights-file"), async (req, res) => {
 	highlightsJSON = await toJSON(String(req.file.buffer));
-	console.log(highlightsJSON);
+	const finishedBookId = Number(req.body.finishedBookId);
+	const data = [];
+	highlightsJSON.highlights.forEach((highlight) => {
+		data.push({
+			finishedBookId,
+			color: highlight.color,
+			content: highlight.content,
+			location: Number(highlight.location),
+		});
+	});
+	await prisma.highlight.createMany({
+		data: data,
+	});
 });
 
 module.exports = router;

@@ -32,7 +32,7 @@ function EditFinishedBook() {
 	return (
 		<div>
 			<h2>Editing {finishedBook.title}</h2>
-			<HighlightsForm />
+			<HighlightsForm finishedBookId={finishedBook.id} />
 			<button onClick={() => handleDeleteFinishedBook(finishedBook.id)}>
 				Delete Finished Book
 			</button>

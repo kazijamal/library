@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import { uploadHighlights } from "../../../services/highlights";
 
-const HighlightsForm = () => {
+const HighlightsForm = (props) => {
 	const formRef = useRef(null);
 	const submit_file = async (e) => {
 		e.preventDefault();
@@ -11,7 +11,14 @@ const HighlightsForm = () => {
 
 	return (
 		<form onSubmit={submit_file} ref={formRef}>
-			<input type="file" name="highlights-file" />
+			<input
+				type="number"
+				name="finishedBookId"
+				value={props.finishedBookId}
+				hidden
+				readOnly
+			/>
+			<input type="file" name="highlights-file" required />
 			<input type="submit" value="Submit" />
 		</form>
 	);
