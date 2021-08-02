@@ -32,3 +32,14 @@ export async function deleteFinishedBook(id) {
 			console.log(err);
 		});
 }
+
+export async function createFinishedBook(title) {
+	axios
+		.post("/api/finishedbooks", { title })
+		.then(function (res) {
+			console.log(res);
+		})
+		.catch(function (err) {
+			console.log(err);
+		});
+}

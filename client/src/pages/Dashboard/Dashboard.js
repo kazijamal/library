@@ -6,13 +6,17 @@ import {
 	deleteReadingBook,
 	createReadingBook,
 } from "../../services/readingBooks";
-import { getFinishedBooks } from "../../services/finishedBooks";
+import {
+	createFinishedBook,
+	getFinishedBooks,
+} from "../../services/finishedBooks";
 
 function Dashboard() {
 	const [alert, setAlert] = useState(false);
 	const [readingBooks, setReadingBooks] = useState([]);
 	const [finishedBooks, setFinishedBooks] = useState([]);
 	const [readingBookTitleInput, setReadingBookTitleInput] = useState("");
+	const [finishedBookTitleInput, setFinishedBookTitleInput] = useState("");
 
 	useEffect(() => {
 		let mounted = true;
@@ -58,6 +62,12 @@ function Dashboard() {
 	const handleNewReadingBookSubmit = async (e) => {
 		e.preventDefault();
 		await createReadingBook(readingBookTitleInput);
+		setAlert(true);
+	};
+
+	const handleNewFinishedBookSubmit = async (e) => {
+		e.preventDefault();
+		await createFinishedBook(finishedBookTitleInput);
 		setAlert(true);
 	};
 
@@ -108,6 +118,17 @@ function Dashboard() {
 					</div>
 				))}
 			</ul>
+			<form onSubmit={handleNewFinishedBookSubmit}>
+				<label>
+					<p>New Finished Book</p>
+					<input
+						type="text"
+						onChange={(e) => setFinishedBookTitleInput(e.target.value)}
+						value={finishedBookTitleInput}
+					/>
+				</label>
+				<button type="submit">Submit</button>
+			</form>
 		</div>
 	);
 }
