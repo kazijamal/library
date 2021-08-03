@@ -12,24 +12,30 @@ function EditFinishedBook() {
 	const { id } = useParams();
 	const [finishedBook, setFinishedBook] = useState();
 	const [highlights, setHighlights] = useState([]);
+	const [fetchedHighlights, setFetchedHighlights] = useState(false);
 
 	useEffect(() => {
 		let mounted = true;
-		if (finishedBook && highlights.length && !alert) {
+		if (finishedBook && fetchedHighlights && !alert) {
 			return;
 		}
-		getFinishedBook(id).then((retrievedFinishedBook) => {
-			if (mounted) {
-				setFinishedBook(retrievedFinishedBook);
-			}
-		});
-		getFinishedBookHighlights(id).then((retrievedHighlights) => {
-			if (mounted) {
-				setHighlights(retrievedHighlights);
-			}
-		});
+		if (!finishedBook) {
+			getFinishedBook(id).then((retrievedFinishedBook) => {
+				if (mounted) {
+					setFinishedBook(retrievedFinishedBook);
+				}
+			});
+		}
+		if (!fetchedHighlights) {
+			getFinishedBookHighlights(id).then((retrievedHighlights) => {
+				if (mounted) {
+					setHighlights(retrievedHighlights);
+					setFetchedHighlights(true);
+				}
+			});
+		}
 		return () => (mounted = false);
-	}, [alert, finishedBook, highlights, id]);
+	}, [alert, finishedBook, fetchedHighlights, id]);
 
 	useEffect(() => {
 		if (alert) {
@@ -53,7 +59,11 @@ function EditFinishedBook() {
 			<h2>Editing {finishedBook.title}</h2>
 			{alert && <h3>Action completed successfully</h3>}
 			{!highlights.length ? (
-				<HighlightsForm finishedBookId={finishedBook.id} setAlert={setAlert} />
+				<HighlightsForm
+					finishedBookId={finishedBook.id}
+					setAlert={setAlert}
+					setFetchedHighlights={setFetchedHighlights}
+				/>
 			) : (
 				<ul>
 					{highlights.map((highlight) => (

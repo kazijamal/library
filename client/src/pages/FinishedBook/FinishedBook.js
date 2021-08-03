@@ -21,7 +21,7 @@ function FinishedBook() {
 			}
 		});
 		return () => (mounted = false);
-	}, [finishedBook, highlights, id]);
+	}, [id]);
 
 	if (!finishedBook || !highlights) {
 		return <p>Loading</p>;

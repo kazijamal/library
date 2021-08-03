@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import { uploadHighlights } from "../../../services/highlights";
 
 function HighlightsForm(props) {
-	const { setAlert } = props;
+	const { setAlert, setFetchedHighlights } = props;
 	const formRef = useRef(null);
 
 	const submit_file = async (e) => {
@@ -10,6 +10,7 @@ function HighlightsForm(props) {
 		const form_data = new FormData(formRef.current);
 		await uploadHighlights(form_data);
 		setAlert(true);
+		setFetchedHighlights(false);
 	};
 
 	return (
