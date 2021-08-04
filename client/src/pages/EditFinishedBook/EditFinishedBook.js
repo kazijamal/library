@@ -27,12 +27,15 @@ function EditFinishedBook() {
 			});
 		}
 		if (!fetchedHighlights) {
-			getFinishedBookHighlights(id).then((retrievedHighlights) => {
-				if (mounted) {
-					setHighlights(retrievedHighlights);
-					setFetchedHighlights(true);
-				}
-			});
+			const timeout = alert ? 1000 : 0;
+			setTimeout(() => {
+				getFinishedBookHighlights(id).then((retrievedHighlights) => {
+					if (mounted) {
+						setHighlights(retrievedHighlights);
+						setFetchedHighlights(true);
+					}
+				});
+			}, timeout);
 		}
 		return () => (mounted = false);
 	}, [alert, finishedBook, fetchedHighlights, id]);
