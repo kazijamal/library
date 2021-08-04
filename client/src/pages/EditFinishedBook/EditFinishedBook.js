@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import {
 	getFinishedBook,
 	deleteFinishedBook,
@@ -27,15 +27,12 @@ function EditFinishedBook() {
 			});
 		}
 		if (!fetchedHighlights) {
-			const timeout = alert ? 1000 : 0;
-			setTimeout(() => {
-				getFinishedBookHighlights(id).then((retrievedHighlights) => {
-					if (mounted) {
-						setHighlights(retrievedHighlights);
-						setFetchedHighlights(true);
-					}
-				});
-			}, timeout);
+			getFinishedBookHighlights(id).then((retrievedHighlights) => {
+				if (mounted) {
+					setHighlights(retrievedHighlights);
+					setFetchedHighlights(true);
+				}
+			});
 		}
 		return () => (mounted = false);
 	}, [alert, finishedBook, fetchedHighlights, id]);
@@ -68,13 +65,7 @@ function EditFinishedBook() {
 					setFetchedHighlights={setFetchedHighlights}
 				/>
 			) : (
-				<ul>
-					{highlights.map((highlight) => (
-						<li key={highlight.id}>
-							{highlight.content} (Location: {highlight.location})
-						</li>
-					))}
-				</ul>
+				<Link to={`/finishedbooks/${finishedBook.id}`}>View Highlights</Link>
 			)}
 			<button onClick={() => handleDeleteFinishedBook(finishedBook.id)}>
 				Delete Finished Book
