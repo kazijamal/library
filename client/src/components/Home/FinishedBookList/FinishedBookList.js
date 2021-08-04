@@ -18,15 +18,19 @@ function FinishedBookList() {
 	return (
 		<div>
 			<h3>Finished Books</h3>
-			<ul>
-				{finishedBooks.map((finishedBook) => (
-					<li key={finishedBook.id}>
-						<Link to={`/finishedbooks/${finishedBook.id}`}>
-							{finishedBook.title}
-						</Link>
-					</li>
-				))}
-			</ul>
+			{finishedBooks ? (
+				<ul>
+					{finishedBooks.map((finishedBook) => (
+						<li key={finishedBook.id}>
+							<Link to={`/finishedbooks/${finishedBook.id}`}>
+								{finishedBook.title}
+							</Link>
+						</li>
+					))}
+				</ul>
+			) : (
+				<p>Loading</p>
+			)}
 		</div>
 	);
 }

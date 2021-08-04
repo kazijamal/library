@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "./Login.css";
 import { loginUser } from "../../services/users";
 import useToken from "../../utils/useToken";
 
@@ -24,7 +23,7 @@ function Login() {
 	}
 
 	return (
-		<div className="login-wrapper">
+		<div>
 			<h1>Log In</h1>
 			<form onSubmit={handleSubmit}>
 				<label>

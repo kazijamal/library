@@ -17,11 +17,15 @@ function ReadingBookList() {
 	return (
 		<div>
 			<h3>Reading Books</h3>
-			<ul>
-				{readingBooks.map((readingBook) => (
-					<li key={readingBook.id}>{readingBook.title}</li>
-				))}
-			</ul>
+			{readingBooks ? (
+				<ul>
+					{readingBooks.map((readingBook) => (
+						<li key={readingBook.id}>{readingBook.title}</li>
+					))}
+				</ul>
+			) : (
+				<p>Loading</p>
+			)}
 		</div>
 	);
 }

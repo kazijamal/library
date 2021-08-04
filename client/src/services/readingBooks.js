@@ -11,6 +11,17 @@ export async function getReadingBooks() {
 		});
 }
 
+export async function getReadingBook(id) {
+	return axios
+		.get(`/api/readingbooks/${id}`)
+		.then(function (res) {
+			return res.data;
+		})
+		.catch(function (err) {
+			console.log(err);
+		});
+}
+
 export async function markReadingBookFinished(id) {
 	axios
 		.patch(`/api/readingbooks/markfinished/${id}`)
