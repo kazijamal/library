@@ -18,16 +18,30 @@ model User {
 }
 
 model FinishedBook {
-  id            Int         @default(autoincrement()) @id
-  createdAt     DateTime    @default(now())
-  title         String
-  highlights    Highlight[]
+  id              Int           @default(autoincrement()) @id
+  createdAt       DateTime      @default(now())
+  title           String
+  highlights      Highlight[]
+  volumeId        String
+  subtitle        String?
+  authors         String[]
+  description     String
+  pageCount       Int
+  categories      String[]
+  imageLink       String
 }
 
 model ReadingBook {
-  id        Int      @default(autoincrement()) @id
-  createdAt DateTime @default(now())
-  title     String
+  id              Int      @default(autoincrement()) @id
+  createdAt       DateTime @default(now())
+  title           String
+  volumeId        String
+  subtitle        String?
+  authors         String[]
+  description     String
+  pageCount       Int
+  categories      String[]
+  imageLink       String
 }
 
 model Highlight {
