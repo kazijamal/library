@@ -21,7 +21,7 @@ router.get("/:id", async (req, res) => {
 
 // create new finished book
 router.post("/", async (req, res) => {
-	const { title } = req.body;
+	const { title, dateFinished } = req.body;
 	const googleBooksResponse = await axios.get(
 		`https://www.googleapis.com/books/v1/volumes?q=${title}&key=${googleBooksAPIKey}`
 	);
@@ -29,18 +29,17 @@ router.post("/", async (req, res) => {
 	const volumeId = volume.id;
 	const volumeTitle = volume.volumeInfo.title;
 	const imageLink = volume.volumeInfo.imageLinks.thumbnail;
-	const { subtitle, authors, description, pageCount, categories } =
-		volume.volumeInfo;
+	const { subtitle, authors, pageCount, categories } = volume.volumeInfo;
 	const finishedBook = await prisma.finishedBook.create({
 		data: {
 			title: volumeTitle,
 			volumeId: volumeId,
 			subtitle: subtitle,
 			authors: authors,
-			description: description,
 			pageCount: pageCount,
 			categories: categories,
 			imageLink: imageLink,
+			dateFinished: new Date(dateFinished),
 		},
 	});
 	res.json(finishedBook);

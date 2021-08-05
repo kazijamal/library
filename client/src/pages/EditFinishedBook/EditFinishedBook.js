@@ -6,6 +6,7 @@ import {
 } from "../../services/finishedBooks";
 import { getFinishedBookHighlights } from "../../services/highlights";
 import HighlightsForm from "../../components/EditFinishedBook/HighlightsForm/HighlightsForm";
+import moment from "moment";
 
 function EditFinishedBook() {
 	const [alert, setAlert] = useState(false);
@@ -69,6 +70,10 @@ function EditFinishedBook() {
 				)}
 			</p>
 			<p>{finishedBook.pageCount} pages</p>
+			<p>
+				Date Finished:{" "}
+				{moment.utc(finishedBook.dateFinished).format("MMMM D, YYYY")}
+			</p>
 			{alert && <h3>Action completed successfully</h3>}
 			{!highlights.length ? (
 				<HighlightsForm

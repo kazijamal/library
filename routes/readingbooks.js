@@ -20,8 +20,8 @@ router.get("/:id", async (req, res) => {
 });
 
 // delete reading book with id and make finished book with same data
-router.patch("/markfinished/:id", async (req, res) => {
-	const { id } = req.params;
+router.post("/markfinished", async (req, res) => {
+	const { id, dateFinished } = req.body;
 	const readingBook = await prisma.readingBook.delete({
 		where: {
 			id: Number(id),
@@ -37,6 +37,7 @@ router.patch("/markfinished/:id", async (req, res) => {
 			pageCount: readingBook.pageCount,
 			categories: readingBook.categories,
 			imageLink: readingBook.imageLink,
+			dateFinished: new Date(dateFinished),
 		},
 	});
 	res.json(finishedBook);
@@ -52,15 +53,13 @@ router.post("/", async (req, res) => {
 	const volumeId = volume.id;
 	const volumeTitle = volume.volumeInfo.title;
 	const imageLink = volume.volumeInfo.imageLinks.thumbnail;
-	const { subtitle, authors, description, pageCount, categories } =
-		volume.volumeInfo;
+	const { subtitle, authors, pageCount, categories } = volume.volumeInfo;
 	const readingBook = await prisma.readingBook.create({
 		data: {
 			title: volumeTitle,
 			volumeId: volumeId,
 			subtitle: subtitle,
 			authors: authors,
-			description: description,
 			pageCount: pageCount,
 			categories: categories,
 			imageLink: imageLink,

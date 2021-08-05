@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getFinishedBook } from "../../services/finishedBooks";
 import { getFinishedBookHighlights } from "../../services/highlights";
+import moment from "moment";
 
 function FinishedBook() {
 	const { id } = useParams();
@@ -42,6 +43,10 @@ function FinishedBook() {
 				)}
 			</p>
 			<p>{finishedBook.pageCount} pages</p>
+			<p>
+				Date Finished:{" "}
+				{moment.utc(finishedBook.dateFinished).format("MMMM D, YYYY")}
+			</p>
 			<h3>Highlights</h3>
 			{!highlights.length ? (
 				<p>No highlights for this book</p>

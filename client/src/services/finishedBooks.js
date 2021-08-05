@@ -33,9 +33,9 @@ export async function deleteFinishedBook(id) {
 		});
 }
 
-export async function createFinishedBook(title) {
+export async function createFinishedBook(title, dateFinished) {
 	axios
-		.post("/api/finishedbooks", { title })
+		.post("/api/finishedbooks", { title, dateFinished })
 		.then(function (res) {
 			console.log(res);
 		})

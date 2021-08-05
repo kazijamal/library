@@ -22,9 +22,9 @@ export async function getReadingBook(id) {
 		});
 }
 
-export async function markReadingBookFinished(id) {
+export async function markReadingBookFinished(id, dateFinished) {
 	axios
-		.patch(`/api/readingbooks/markfinished/${id}`)
+		.post("/api/readingbooks/markfinished", { id, dateFinished })
 		.then(function (res) {
 			console.log(res);
 		})

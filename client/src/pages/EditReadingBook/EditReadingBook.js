@@ -9,6 +9,7 @@ import {
 function EditReadingBook() {
 	const { id } = useParams();
 	const [readingBook, setReadingBook] = useState();
+	const [dateFinished, setDateFinished] = useState("");
 
 	useEffect(() => {
 		let mounted = true;
@@ -20,8 +21,9 @@ function EditReadingBook() {
 		return () => (mounted = false);
 	}, [id]);
 
-	const handleMarkReadingBookFinished = async (id) => {
-		await markReadingBookFinished(id);
+	const handleMarkReadingBookFinished = async (e) => {
+		e.preventDefault();
+		await markReadingBookFinished(id, dateFinished);
 		window.location.pathname = "/dashboard";
 	};
 
@@ -49,9 +51,18 @@ function EditReadingBook() {
 				)}
 			</p>
 			<p>{readingBook.pageCount} pages</p>
-			<button onClick={() => handleMarkReadingBookFinished(readingBook.id)}>
-				Mark Reading Book as Finished
-			</button>
+			<form onSubmit={handleMarkReadingBookFinished}>
+				<label>
+					<p>Date Finished</p>
+					<input
+						type="date"
+						onChange={(e) => setDateFinished(e.target.value)}
+						value={dateFinished}
+						required
+					/>
+				</label>
+				<button type="submit">Mark Reading Book as Finished</button>
+			</form>
 			<button onClick={() => handleDeleteReadingBook(readingBook.id)}>
 				Delete Reading Book
 			</button>
