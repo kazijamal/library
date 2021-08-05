@@ -56,7 +56,19 @@ function EditFinishedBook() {
 
 	return (
 		<div>
+			<img src={finishedBook.imageLink} alt="book cover" />
 			<h2>Editing {finishedBook.title}</h2>
+			{finishedBook.subtitle && <h3>{finishedBook.subtitle}</h3>}
+			<h4>{finishedBook.authors.join(", ")}</h4>
+			<p>
+				Categories:{" "}
+				{finishedBook.categories.length ? (
+					finishedBook.categories.join(", ")
+				) : (
+					<span>None</span>
+				)}
+			</p>
+			<p>{finishedBook.pageCount} pages</p>
 			{alert && <h3>Action completed successfully</h3>}
 			{!highlights.length ? (
 				<HighlightsForm

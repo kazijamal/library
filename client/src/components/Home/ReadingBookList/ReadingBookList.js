@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { getReadingBooks } from "../../../services/readingBooks";
 
 function ReadingBookList() {
@@ -20,7 +21,11 @@ function ReadingBookList() {
 			{readingBooks ? (
 				<ul>
 					{readingBooks.map((readingBook) => (
-						<li key={readingBook.id}>{readingBook.title}</li>
+						<li key={readingBook.id}>
+							<Link to={`/readingbooks/${readingBook.id}`}>
+								{readingBook.title}
+							</Link>
+						</li>
 					))}
 				</ul>
 			) : (

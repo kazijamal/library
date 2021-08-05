@@ -1,12 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import {
-	getReadingBook,
-	markReadingBookFinished,
-	deleteReadingBook,
-} from "../../services/readingBooks";
+import { getReadingBook } from "../../services/readingBooks";
 
-function EditReadingBook() {
+function ReadingBook() {
 	const { id } = useParams();
 	const [readingBook, setReadingBook] = useState();
 
@@ -20,16 +16,6 @@ function EditReadingBook() {
 		return () => (mounted = false);
 	}, [id]);
 
-	const handleMarkReadingBookFinished = async (id) => {
-		await markReadingBookFinished(id);
-		window.location.pathname = "/dashboard";
-	};
-
-	const handleDeleteReadingBook = async (id) => {
-		await deleteReadingBook(id);
-		window.location.pathname = "/dashboard";
-	};
-
 	if (!readingBook) {
 		return <p>Loading</p>;
 	}
@@ -37,7 +23,7 @@ function EditReadingBook() {
 	return (
 		<div>
 			<img src={readingBook.imageLink} alt="book cover" />
-			<h2>Editing {readingBook.title}</h2>
+			<h2>{readingBook.title}</h2>
 			{readingBook.subtitle && <h3>{readingBook.subtitle}</h3>}
 			<h4>{readingBook.authors.join(", ")}</h4>
 			<p>
@@ -49,14 +35,8 @@ function EditReadingBook() {
 				)}
 			</p>
 			<p>{readingBook.pageCount} pages</p>
-			<button onClick={() => handleMarkReadingBookFinished(readingBook.id)}>
-				Mark Reading Book as Finished
-			</button>
-			<button onClick={() => handleDeleteReadingBook(readingBook.id)}>
-				Delete Reading Book
-			</button>
 		</div>
 	);
 }
 
-export default EditReadingBook;
+export default ReadingBook;

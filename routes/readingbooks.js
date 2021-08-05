@@ -30,6 +30,13 @@ router.patch("/markfinished/:id", async (req, res) => {
 	const finishedBook = await prisma.finishedBook.create({
 		data: {
 			title: readingBook.title,
+			volumeId: readingBook.volumeId,
+			subtitle: readingBook.subtitle,
+			authors: readingBook.authors,
+			description: readingBook.description,
+			pageCount: readingBook.pageCount,
+			categories: readingBook.categories,
+			imageLink: readingBook.imageLink,
 		},
 	});
 	res.json(finishedBook);

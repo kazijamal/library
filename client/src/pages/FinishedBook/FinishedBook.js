@@ -29,7 +29,20 @@ function FinishedBook() {
 
 	return (
 		<div>
+			<img src={finishedBook.imageLink} alt="book cover" />
 			<h2>{finishedBook.title}</h2>
+			{finishedBook.subtitle && <h3>{finishedBook.subtitle}</h3>}
+			<h4>{finishedBook.authors.join(", ")}</h4>
+			<p>
+				Categories:{" "}
+				{finishedBook.categories.length ? (
+					finishedBook.categories.join(", ")
+				) : (
+					<span>None</span>
+				)}
+			</p>
+			<p>{finishedBook.pageCount} pages</p>
+			<h3>Highlights</h3>
 			{!highlights.length ? (
 				<p>No highlights for this book</p>
 			) : (
