@@ -50,7 +50,7 @@ function EditReadingBook() {
 					<span>None</span>
 				)}
 			</p>
-			<p>{readingBook.pageCount} pages</p>
+			{readingBook.pageCount && <p>{readingBook.pageCount} pages</p>}
 			<form onSubmit={handleMarkReadingBookFinished}>
 				<label>
 					<p>Date Finished</p>

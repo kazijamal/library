@@ -42,7 +42,7 @@ function FinishedBook() {
 					<span>None</span>
 				)}
 			</p>
-			<p>{finishedBook.pageCount} pages</p>
+			{finishedBook.pageCount && <p>{finishedBook.pageCount} pages</p>}
 			<p>
 				Date Finished:{" "}
 				{moment.utc(finishedBook.dateFinished).format("MMMM D, YYYY")}

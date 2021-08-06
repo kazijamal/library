@@ -25,7 +25,7 @@ model FinishedBook {
   volumeId        String
   subtitle        String?
   authors         String[]
-  pageCount       Int
+  pageCount       Int?
   categories      String[]
   imageLink       String
   dateFinished    DateTime
@@ -38,7 +38,7 @@ model ReadingBook {
   volumeId        String
   subtitle        String?
   authors         String[]
-  pageCount       Int
+  pageCount       Int?
   categories      String[]
   imageLink       String
 }

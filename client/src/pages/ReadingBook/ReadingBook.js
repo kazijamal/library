@@ -34,7 +34,7 @@ function ReadingBook() {
 					<span>None</span>
 				)}
 			</p>
-			<p>{readingBook.pageCount} pages</p>
+			{readingBook.pageCount && <p>{readingBook.pageCount} pages</p>}
 		</div>
 	);
 }
