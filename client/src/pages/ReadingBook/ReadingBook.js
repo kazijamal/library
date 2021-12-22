@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { getReadingBook } from "../../services/readingBooks";
 
 function ReadingBook() {
@@ -22,19 +22,22 @@ function ReadingBook() {
 
 	return (
 		<div>
-			<img src={readingBook.imageLink} alt="book cover" />
-			<h2>{readingBook.title}</h2>
-			{readingBook.subtitle && <h3>{readingBook.subtitle}</h3>}
-			<h4>{readingBook.authors.join(", ")}</h4>
-			<p>
-				Categories:{" "}
-				{readingBook.categories.length ? (
-					readingBook.categories.join(", ")
-				) : (
-					<span>None</span>
-				)}
-			</p>
-			{readingBook.pageCount && <p>{readingBook.pageCount} pages</p>}
+			<Link to="/" className="text-xl underline text-gray-600 hover:text-black">← Back to all books</Link>
+			<div className="text-center">
+				<img src={readingBook.imageLink} alt="book cover" className="m-auto shadow-lg" />
+				<h2 className="text-3xl font-semibold mt-5">{readingBook.title}</h2>
+				{readingBook.subtitle && <h3 className="text-xl font-medium italic">{readingBook.subtitle}</h3>}
+				<h4 className="text-xl font-medium mt-3">{readingBook.authors.join(", ")}</h4>
+				<p>
+					Categories:{" "}
+					{readingBook.categories.length ? (
+						readingBook.categories.join(", ")
+					) : (
+						<span>None</span>
+					)}
+				</p>
+				{readingBook.pageCount && <p>{readingBook.pageCount} pages</p>}
+			</div>
 		</div>
 	);
 }

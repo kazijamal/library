@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { getFinishedBook } from "../../services/finishedBooks";
 import { getFinishedBookHighlights } from "../../services/highlights";
 import moment from "moment";
@@ -30,35 +30,38 @@ function FinishedBook() {
 
 	return (
 		<div>
-			<img src={finishedBook.imageLink} alt="book cover" />
-			<h2>{finishedBook.title}</h2>
-			{finishedBook.subtitle && <h3>{finishedBook.subtitle}</h3>}
-			<h4>{finishedBook.authors.join(", ")}</h4>
-			<p>
-				Categories:{" "}
-				{finishedBook.categories.length ? (
-					finishedBook.categories.join(", ")
+			<Link to="/" className="text-xl underline text-gray-600 hover:text-black">← Back to all books</Link>
+			<div className="text-center">
+				<img src={finishedBook.imageLink} alt="book cover" className="m-auto shadow-lg" />
+				<h2 className="text-3xl font-semibold mt-5">{finishedBook.title}</h2>
+				{finishedBook.subtitle && <h3 className="text-xl font-medium italic">{finishedBook.subtitle}</h3>}
+				<h4 className="text-xl font-medium mt-3">{finishedBook.authors.join(", ")}</h4>
+				<p>
+					Categories:{" "}
+					{finishedBook.categories.length ? (
+						finishedBook.categories.join(", ")
+					) : (
+						<span>None</span>
+					)}
+				</p>
+				{finishedBook.pageCount && <p>{finishedBook.pageCount} pages</p>}
+				<p className="mb-5">
+					Date Finished:{" "}
+					{moment.utc(finishedBook.dateFinished).format("MMMM D, YYYY")}
+				</p>
+				<h3 className="text-2xl font-semibold mb-5">Highlights</h3>
+				{!highlights.length ? (
+					<p>No highlights for this book</p>
 				) : (
-					<span>None</span>
+					<ul className="text-left w-3/4 m-auto">
+						{highlights.map((highlight) => (
+							<li key={highlight.id} className="my-5 bg-green-50 p-2 transition ease-in-out delay-150 hover:scale-105 hover:shadow-lg">
+								{highlight.content} (Location: {highlight.location})
+							</li>
+						))}
+					</ul>
 				)}
-			</p>
-			{finishedBook.pageCount && <p>{finishedBook.pageCount} pages</p>}
-			<p>
-				Date Finished:{" "}
-				{moment.utc(finishedBook.dateFinished).format("MMMM D, YYYY")}
-			</p>
-			<h3>Highlights</h3>
-			{!highlights.length ? (
-				<p>No highlights for this book</p>
-			) : (
-				<ul>
-					{highlights.map((highlight) => (
-						<li key={highlight.id}>
-							{highlight.content} (Location: {highlight.location})
-						</li>
-					))}
-				</ul>
-			)}
+			</div>
 		</div>
 	);
 }

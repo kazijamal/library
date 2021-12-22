@@ -32,7 +32,7 @@ function Login() {
 						type="text"
 						onChange={(e) => setUsername(e.target.value)}
 						required
-						className="my-3 px-3 py-2 border border-slate-300 rounded-md w-full"
+						className="my-3 px-3 py-2 border border-gray-300 rounded-md w-full"
 					/>
 				</label>
 				<label>
@@ -41,7 +41,7 @@ function Login() {
 						type="password"
 						onChange={(e) => setPassword(e.target.value)}
 						required
-						className="my-3 px-3 py-2 border border-slate-300 rounded-md w-full"
+						className="my-3 px-3 py-2 border border-gray-300 rounded-md w-full"
 					/>
 				</label>
 				<div className="grid place-items-center">
