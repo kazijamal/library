@@ -16,18 +16,19 @@ function ReadingBookList() {
 	}, []);
 
 	return (
-		<div>
-			<h3>Reading Books</h3>
+		<div className="my-5">
+			<h3 className="text-2xl font-semibold">Reading Books</h3>
 			{readingBooks ? (
-				<ul>
+				<div className="flex flex-row">
 					{readingBooks.map((readingBook) => (
-						<li key={readingBook.id}>
+						<div key={readingBook.id} className="">
+							<img src={readingBook.imageLink} alt="book cover" />
 							<Link to={`/readingbooks/${readingBook.id}`}>
 								{readingBook.title}
 							</Link>
-						</li>
+						</div>
 					))}
-				</ul>
+				</div>
 			) : (
 				<p>Loading</p>
 			)}

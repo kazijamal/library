@@ -15,7 +15,7 @@ import AddFinishedBook from "./pages/AddFinishedBook/AddFinishedBook";
 function App() {
 	return (
 		<div className="wrapper">
-			<h1>Kazi's Library</h1>
+			<h1 className="text-4xl font-bold mb-5">Kazi's Library</h1>
 			<BrowserRouter>
 				<Route exact path="/" component={Home} />
 				<Route exact path="/login" component={Login} />

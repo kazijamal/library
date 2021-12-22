@@ -6,8 +6,7 @@ import FinishedBookList from "../../components/Home/FinishedBookList/FinishedBoo
 function Home() {
 	return (
 		<div>
-			<h2>Home</h2>
-			<Link to="/login">Log In</Link>
+			<Link to="/login" className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Log In</Link>
 			<ReadingBookList />
 			<FinishedBookList />
 		</div>
