@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { getFinishedBooks } from "../../../services/finishedBooks";
-import { Typography } from "@material-ui/core";
 
 function FinishedBookList() {
 	const [finishedBooks, setFinishedBooks] = useState([]);
@@ -18,7 +17,7 @@ function FinishedBookList() {
 
 	return (
 		<div>
-			<Typography variant="h4">Finished Books</Typography>
+			<h3>Finished Books</h3>
 			{finishedBooks ? (
 				<ul>
 					{finishedBooks.map((finishedBook) => (
