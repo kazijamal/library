@@ -17,16 +17,16 @@ function ReadingBookList() {
 
 	return (
 		<div className="my-5">
-			<h3 className="text-2xl font-semibold">Reading Books</h3>
+			<h3 className="text-2xl font-semibold my-3">Reading Books</h3>
 			{readingBooks ? (
-				<div className="flex flex-row">
+				<div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
 					{readingBooks.map((readingBook) => (
-						<div key={readingBook.id} className="">
-							<img src={readingBook.imageLink} alt="book cover" />
-							<Link to={`/readingbooks/${readingBook.id}`}>
+						<Link to={`/readingbooks/${readingBook.id}`} key={readingBook.id} className="rounded-lg mx-5 my-3 p-4 shadow-lg transition ease-in-out delay-150 hover:scale-105 hover:shadow-2xl">
+							<img src={readingBook.imageLink} alt="book cover" className="m-auto mb-3 w-full" />
+							<p className="text-md font-medium text-center">
 								{readingBook.title}
-							</Link>
-						</div>
+							</p>
+						</Link>
 					))}
 				</div>
 			) : (
