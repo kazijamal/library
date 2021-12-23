@@ -23,7 +23,7 @@ function ReadingBook() {
 	return (
 		<div>
 			<Link to="/" className="text-xl underline text-gray-600 hover:text-black">← Back to all books</Link>
-			<div className="text-center">
+			<div className="text-center mt-5">
 				<img src={readingBook.imageLink} alt="book cover" className="m-auto shadow-lg" />
 				<h2 className="text-3xl font-semibold mt-5">{readingBook.title}</h2>
 				{readingBook.subtitle && <h3 className="text-xl font-medium italic">{readingBook.subtitle}</h3>}

@@ -31,7 +31,7 @@ function FinishedBook() {
 	return (
 		<div>
 			<Link to="/" className="text-xl underline text-gray-600 hover:text-black">← Back to all books</Link>
-			<div className="text-center">
+			<div className="text-center mt-5">
 				<img src={finishedBook.imageLink} alt="book cover" className="m-auto shadow-lg" />
 				<h2 className="text-3xl font-semibold mt-5">{finishedBook.title}</h2>
 				{finishedBook.subtitle && <h3 className="text-xl font-medium italic">{finishedBook.subtitle}</h3>}
@@ -53,7 +53,7 @@ function FinishedBook() {
 				{!highlights.length ? (
 					<p>No highlights for this book</p>
 				) : (
-					<ul className="text-left w-3/4 m-auto">
+					<ul className="text-left w-full md:w-3/4 m-auto">
 						{highlights.map((highlight) => (
 							<li key={highlight.id} className="my-5 bg-green-50 p-2 transition ease-in-out delay-150 hover:scale-105 hover:shadow-lg">
 								{highlight.content} (Location: {highlight.location})

@@ -23,7 +23,7 @@ function Login() {
 	}
 
 	return (
-		<div className="rounded-2xl shadow-xl m-auto p-10 w-3/4 md:w-1/2">
+		<div className="rounded-2xl shadow-xl m-auto p-10 w-full md:w-1/2">
 			<h1 className="text-3xl font-semibold text-center mb-5">Log In</h1>
 			<form onSubmit={handleSubmit}>
 				<label>
