@@ -57,36 +57,43 @@ function EditFinishedBook() {
 
 	return (
 		<div>
-			<img src={finishedBook.imageLink} alt="book cover" />
-			<h2>Editing {finishedBook.title}</h2>
-			{finishedBook.subtitle && <h3>{finishedBook.subtitle}</h3>}
-			<h4>{finishedBook.authors.join(", ")}</h4>
-			<p>
-				Categories:{" "}
-				{finishedBook.categories.length ? (
-					finishedBook.categories.join(", ")
-				) : (
-					<span>None</span>
-				)}
-			</p>
-			{finishedBook.pageCount && <p>{finishedBook.pageCount} pages</p>}
-			<p>
-				Date Finished:{" "}
-				{moment.utc(finishedBook.dateFinished).format("MMMM D, YYYY")}
-			</p>
-			{alert && <h3>Action completed successfully</h3>}
-			{!highlights.length ? (
-				<HighlightsForm
-					finishedBookId={finishedBook.id}
-					setAlert={setAlert}
-					setFetchedHighlights={setFetchedHighlights}
-				/>
-			) : (
-				<Link to={`/finishedbooks/${finishedBook.id}`}>View Highlights</Link>
-			)}
-			<button onClick={() => handleDeleteFinishedBook(finishedBook.id)}>
-				Delete Finished Book
-			</button>
+			<Link to="/dashboard" className="text-xl underline text-gray-600 hover:text-black">← Back to dashboard</Link>
+			<div className="text-center mt-5">
+				<img src={finishedBook.imageLink} alt="book cover" className="m-auto shadow-lg" />
+				<h2 className="text-3xl font-semibold mt-5">{finishedBook.title}</h2>
+				{finishedBook.subtitle && <h3 className="text-xl font-medium italic">{finishedBook.subtitle}</h3>}
+				<h4 className="text-xl font-medium mt-3">{finishedBook.authors.join(", ")}</h4>
+				<p>
+					Categories:{" "}
+					{finishedBook.categories.length ? (
+						finishedBook.categories.join(", ")
+					) : (
+						<span>None</span>
+					)}
+				</p>
+				{finishedBook.pageCount && <p>{finishedBook.pageCount} pages</p>}
+				<p>
+					Date Finished:{" "}
+					{moment.utc(finishedBook.dateFinished).format("MMMM D, YYYY")}
+				</p>
+				<div className="my-5">
+					{alert && <h3>Action completed successfully</h3>}
+					{!highlights.length ? (
+						<HighlightsForm
+							finishedBookId={finishedBook.id}
+							setAlert={setAlert}
+							setFetchedHighlights={setFetchedHighlights}
+						/>
+					) : (
+						<div className="my-3">
+							<Link to={`/finishedbooks/${finishedBook.id}`} className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">View Highlights</Link>
+						</div>
+					)}
+					<button onClick={() => handleDeleteFinishedBook(finishedBook.id)} className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+						Delete Finished Book
+					</button>
+				</div>
+			</div>
 		</div>
 	);
 }
