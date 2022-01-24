@@ -31,6 +31,17 @@ router.get('/finishedbook/:finishedBookId', async (req, res) => {
   res.json(highlights);
 });
 
+// get some random highlights
+router.get('/random/:count', async (req, res) => {
+  const { count } = req.params;
+  const highlights = await prisma.highlight.findMany({
+    include: { finishedBook: true },
+  });
+  const shuffledHighlights = highlights.sort(() => 0.5 - Math.random());
+  const randomHighlights = shuffledHighlights.slice(0, count);
+  res.json(randomHighlights);
+});
+
 // upload highlights for a finished book
 router.post('/upload', upload.single('highlights-file'), async (req, res) => {
   highlightsJSON = await toJSON(String(req.file.buffer));
