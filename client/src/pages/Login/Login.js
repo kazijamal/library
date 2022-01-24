@@ -17,12 +17,11 @@ function Login() {
     };
     loginUser(credentials).then((token) => {
       setToken(token);
+      if (token) {
+        navigate('/dashboard');
+      }
     });
   };
-
-  if (token) {
-    navigate('/dashboard');
-  }
 
   return (
     <div className='rounded-2xl shadow-xl m-auto p-10 w-full md:w-1/2'>

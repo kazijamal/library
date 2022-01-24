@@ -5,6 +5,7 @@ import Home from './pages/Home/Home';
 import Login from './pages/Login/Login';
 import ReadingBook from './pages/ReadingBook/ReadingBook';
 import FinishedBook from './pages/FinishedBook/FinishedBook';
+import AlreadyAuth from './components/AlreadyAuth/AlreadyAuth';
 import RequireAuth from './components/RequireAuth/RequireAuth';
 import Dashboard from './pages/Dashboard/Dashboard';
 import EditReadingBook from './pages/EditReadingBook/EditReadingBook';
@@ -22,7 +23,9 @@ function App() {
       <Router>
         <Routes>
           <Route path='/' element={<Home />} />
-          <Route path='/login' element={<Login />} />
+          <Route element={<AlreadyAuth />}>
+            <Route path='/login' element={<Login />} />
+          </Route>
           <Route path='/readingbooks/:id' element={<ReadingBook />} />
           <Route path='/finishedbooks/:id' element={<FinishedBook />} />
           <Route element={<RequireAuth />}>
