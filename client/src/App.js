@@ -15,7 +15,7 @@ import AddFinishedBook from './pages/AddFinishedBook/AddFinishedBook';
 function App() {
   return (
     <div className='wrapper'>
-      <h1 className='text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-br from-blue-400 to-purple-600'>
+      <h1 className='select-none mb-5 text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-br from-blue-400 to-purple-600'>
         Kazi's Library
       </h1>
       <BrowserRouter>
