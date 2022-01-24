@@ -23,3 +23,14 @@ export async function getFinishedBookHighlights(finishedBookId) {
       console.log(err);
     });
 }
+
+export async function getRandomHighlights(count) {
+  return axios
+    .get(`/api/highlights/random/${count}`)
+    .then(function (res) {
+      return res.data;
+    })
+    .catch(function (err) {
+      console.log(err);
+    });
+}

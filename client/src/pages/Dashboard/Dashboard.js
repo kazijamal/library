@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import RandomHighlights from '../../components/Home/RandomHighlights/RandomHighlights';
 import ReadingBookList from '../../components/Dashboard/ReadingBookList/ReadingBookList';
 import FinishedBookList from '../../components/Dashboard/FinishedBookList/FinishedBookList';
 
@@ -19,6 +20,7 @@ function Dashboard() {
       >
         Log Out
       </button>
+      <RandomHighlights />
       <ReadingBookList />
       <Link
         to='/dashboard/readingbooks/add'
