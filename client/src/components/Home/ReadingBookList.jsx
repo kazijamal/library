@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { getFinishedBooks } from '../../../services/finishedBooks';
+import { getReadingBooks } from '../../services/readingBooks';
 
-function FinishedBookList() {
-  const [finishedBooks, setFinishedBooks] = useState([]);
+function ReadingBookList() {
+  const [readingBooks, setReadingBooks] = useState([]);
 
   useEffect(() => {
     let mounted = true;
-    getFinishedBooks().then((retrievedFinishedBooks) => {
+    getReadingBooks().then((retrievedReadingBooks) => {
       if (mounted) {
-        setFinishedBooks(retrievedFinishedBooks);
+        setReadingBooks(retrievedReadingBooks);
       }
     });
     return () => (mounted = false);
@@ -17,22 +17,24 @@ function FinishedBookList() {
 
   return (
     <div className='my-5'>
-      <h3 className='text-2xl font-semibold my-3'>Finished Books</h3>
-      {finishedBooks ? (
+      <h3 className='text-2xl font-semibold my-3'>
+        What I'm Currently Reading
+      </h3>
+      {readingBooks ? (
         <div className='grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5'>
-          {finishedBooks.map((finishedBook) => (
+          {readingBooks.map((readingBook) => (
             <Link
-              to={`/dashboard/finishedbooks/edit/${finishedBook.id}`}
-              key={finishedBook.id}
+              to={`/readingbooks/${readingBook.id}`}
+              key={readingBook.id}
               className='rounded-lg mx-5 my-3 p-4 shadow-lg transition ease-in-out delay-150 hover:scale-105 hover:shadow-2xl'
             >
               <img
-                src={finishedBook.imageLink}
+                src={readingBook.imageLink}
                 alt='book cover'
                 className='m-auto mb-3 w-full'
               />
               <p className='text-md font-medium text-center'>
-                {finishedBook.title}
+                {readingBook.title}
               </p>
             </Link>
           ))}
@@ -44,4 +46,4 @@ function FinishedBookList() {
   );
 }
 
-export default FinishedBookList;
+export default ReadingBookList;

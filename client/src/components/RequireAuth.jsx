@@ -1,6 +1,5 @@
-import React from 'react';
 import { Navigate, Outlet } from 'react-router';
-import useToken from '../../utils/useToken';
+import useToken from '../utils/useToken';
 
 function RequireAuth() {
   const { token } = useToken();

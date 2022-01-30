@@ -1,5 +1,5 @@
-import React, { useRef } from 'react';
-import { uploadHighlights } from '../../../services/highlights';
+import { useRef } from 'react';
+import { uploadHighlights } from '../../services/highlights';
 
 function HighlightsForm(props) {
   const { setAlert, setFetchedHighlights } = props;

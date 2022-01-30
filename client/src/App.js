@@ -1,18 +1,17 @@
-import React from 'react';
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Home from './pages/Home/Home';
-import Login from './pages/Login/Login';
-import ReadingBook from './pages/ReadingBook/ReadingBook';
-import FinishedBook from './pages/FinishedBook/FinishedBook';
-import AlreadyAuth from './components/AlreadyAuth/AlreadyAuth';
-import RequireAuth from './components/RequireAuth/RequireAuth';
-import Dashboard from './pages/Dashboard/Dashboard';
-import EditReadingBook from './pages/EditReadingBook/EditReadingBook';
-import AddReadingBook from './pages/AddReadingBook/AddReadingBook';
-import EditFinishedBook from './pages/EditFinishedBook/EditFinishedBook';
-import AddFinishedBook from './pages/AddFinishedBook/AddFinishedBook';
-import NotFound from './pages/NotFound/NotFound';
+import Home from './pages/Home';
+import Login from './pages/Login';
+import ReadingBook from './pages/ReadingBook';
+import FinishedBook from './pages/FinishedBook';
+import AlreadyAuth from './components/AlreadyAuth';
+import RequireAuth from './components/RequireAuth';
+import Dashboard from './pages/Dashboard';
+import EditReadingBook from './pages/EditReadingBook';
+import AddReadingBook from './pages/AddReadingBook';
+import EditFinishedBook from './pages/EditFinishedBook';
+import AddFinishedBook from './pages/AddFinishedBook';
+import NotFound from './pages/NotFound';
 import { useDarkMode } from './utils/useDarkMode';
 
 function App() {

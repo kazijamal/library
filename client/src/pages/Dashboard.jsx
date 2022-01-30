@@ -1,8 +1,7 @@
-import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import RandomHighlights from '../../components/Home/RandomHighlights/RandomHighlights';
-import ReadingBookList from '../../components/Dashboard/ReadingBookList/ReadingBookList';
-import FinishedBookList from '../../components/Dashboard/FinishedBookList/FinishedBookList';
+import RandomHighlights from '../components/Home/RandomHighlights';
+import ReadingBookList from '../components/Dashboard/ReadingBookList';
+import FinishedBookList from '../components/Dashboard/FinishedBookList';
 
 function Dashboard() {
   const navigate = useNavigate();

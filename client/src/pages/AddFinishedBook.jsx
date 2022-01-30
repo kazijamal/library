@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { createFinishedBook } from '../../services/finishedBooks';
+import { createFinishedBook } from '../services/finishedBooks';
 
 function AddFinishedBook() {
   const navigate = useNavigate();

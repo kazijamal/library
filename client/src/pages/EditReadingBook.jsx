@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import {
   getReadingBook,
   markReadingBookFinished,
   deleteReadingBook,
-} from '../../services/readingBooks';
+} from '../services/readingBooks';
 
 function EditReadingBook() {
   const navigate = useNavigate();

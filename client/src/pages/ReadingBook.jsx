@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { getReadingBook } from '../../services/readingBooks';
+import { getReadingBook } from '../services/readingBooks';
 
 function ReadingBook() {
   const { id } = useParams();

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { getRandomHighlights } from '../../../services/highlights';
+import { getRandomHighlights } from '../../services/highlights';
 
 function RandomHighlights() {
   const [randomHighlights, setRandomHighlights] = useState([]);
