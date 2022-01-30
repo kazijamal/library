@@ -1,5 +1,6 @@
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import ReadingBook from './pages/ReadingBook';
@@ -12,18 +13,12 @@ import AddReadingBook from './pages/AddReadingBook';
 import EditFinishedBook from './pages/EditFinishedBook';
 import AddFinishedBook from './pages/AddFinishedBook';
 import NotFound from './pages/NotFound';
-import DarkModeToggle from './components/DarkModeToggle';
 
 function App() {
   return (
     <div className='background bg-neutral-50 dark:bg-neutral-900'>
       <div className='wrapper dark:text-neutral-100'>
-        <div class='relative flex items-center justify-between mb-5'>
-          <h1 className='select-none text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-br from-blue-400 to-purple-600'>
-            Kazi's Library
-          </h1>
-          <DarkModeToggle />
-        </div>
+        <Navbar />
         <Router>
           <Routes>
             <Route element={<AlreadyAuth />}>
