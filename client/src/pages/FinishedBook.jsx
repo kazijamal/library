@@ -72,7 +72,7 @@ function FinishedBook() {
             {highlights.map((highlight) => (
               <li
                 key={highlight.id}
-                className='mt-5 mb-3 mx-2 bg-indigo-100 p-2 transition ease-in-out delay-150 hover:scale-105 hover:shadow-lg dark:bg-indigo-500/25'
+                className='mt-5 mb-3 mx-2 rounded bg-indigo-100 p-2 transition ease-in-out delay-150 hover:scale-105 hover:shadow-lg dark:bg-indigo-500/25'
               >
                 {highlight.content}
               </li>
