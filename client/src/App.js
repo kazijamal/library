@@ -17,11 +17,13 @@ import DarkModeToggle from './components/DarkModeToggle';
 function App() {
   return (
     <div className='background bg-neutral-50 dark:bg-neutral-900'>
-      <div className='wrapper relative dark:text-neutral-100'>
-        <h1 className='select-none mb-5 text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-br from-blue-400 to-purple-600'>
-          Kazi's Library
-        </h1>
-        <DarkModeToggle />
+      <div className='wrapper dark:text-neutral-100'>
+        <div class='relative flex items-center justify-between mb-5'>
+          <h1 className='select-none text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-br from-blue-400 to-purple-600'>
+            Kazi's Library
+          </h1>
+          <DarkModeToggle />
+        </div>
         <Router>
           <Routes>
             <Route element={<AlreadyAuth />}>

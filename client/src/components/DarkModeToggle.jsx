@@ -4,7 +4,7 @@ function DarkModeToggle() {
   const [isDark, setIsDark] = useDarkMode();
 
   return (
-    <div className='absolute top-6 right-6 w-min cursor-pointer transition ease-in-out delay-50 hover:scale-110'>
+    <div className='w-min cursor-pointer transition ease-in-out delay-50 hover:scale-110'>
       {isDark ? (
         <svg
           onClick={(e) => setIsDark(false)}
