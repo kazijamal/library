@@ -31,7 +31,7 @@ function FinishedBookList() {
               <img
                 src={finishedBook.imageLink}
                 alt='book cover'
-                className='m-auto mb-3 w-full'
+                className='m-auto mb-3 w-full rounded-lg'
               />
               <p className='text-md font-medium text-center'>
                 {finishedBook.title}

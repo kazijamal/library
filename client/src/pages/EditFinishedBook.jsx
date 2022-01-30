@@ -65,7 +65,7 @@ function EditFinishedBook() {
         <img
           src={finishedBook.imageLink}
           alt='book cover'
-          className='m-auto shadow-lg'
+          className='m-auto shadow-lg rounded-lg'
         />
         <h2 className='text-3xl font-semibold mt-5'>{finishedBook.title}</h2>
         {finishedBook.subtitle && (

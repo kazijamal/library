@@ -29,7 +29,7 @@ function ReadingBook() {
         <img
           src={readingBook.imageLink}
           alt='book cover'
-          className='m-auto shadow-lg'
+          className='m-auto shadow-lg rounded-lg'
         />
         <h2 className='text-3xl font-semibold mt-5'>{readingBook.title}</h2>
         {readingBook.subtitle && (
