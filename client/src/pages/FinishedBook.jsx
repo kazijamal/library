@@ -30,7 +30,10 @@ function FinishedBook() {
 
   return (
     <div>
-      <Link to='/' className='text-xl underline text-gray-600 hover:text-black'>
+      <Link
+        to='/'
+        className='text-xl underline text-gray-600 hover:text-black dark:text-neutral-100 dark:hover:text-indigo-200'
+      >
         ← Back to all books
       </Link>
       <div className='text-center mt-5'>
@@ -69,9 +72,9 @@ function FinishedBook() {
             {highlights.map((highlight) => (
               <li
                 key={highlight.id}
-                className='my-5 bg-green-50 p-2 transition ease-in-out delay-150 hover:scale-105 hover:shadow-lg'
+                className='mt-5 mb-3 mx-2 bg-indigo-100 p-2 transition ease-in-out delay-150 hover:scale-105 hover:shadow-lg dark:bg-indigo-500/25'
               >
-                {highlight.content} (Location: {highlight.location})
+                {highlight.content}
               </li>
             ))}
           </ul>
