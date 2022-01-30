@@ -1,11 +1,7 @@
 module.exports = {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
   theme: {
-    extend: {
-      screens: {
-        betterhover: { raw: '(hover: hover)' },
-      },
-    },
+    extend: {},
   },
   plugins: [],
   darkMode: 'class',
