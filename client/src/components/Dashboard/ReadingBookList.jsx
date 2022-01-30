@@ -17,7 +17,9 @@ function ReadingBookList() {
 
   return (
     <div className='my-5'>
-      <h3 className='text-2xl font-semibold my-3'>Reading Books</h3>
+      <h3 className='text-2xl font-semibold my-3'>
+        What I'm Currently Reading
+      </h3>
       {readingBooks ? (
         <div className='grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5'>
           {readingBooks.map((readingBook) => (

@@ -18,7 +18,7 @@ function FinishedBookList() {
   return (
     <div className='my-5'>
       <h3 className='text-2xl font-semibold my-3'>
-        Books I've Finished Reading with Highlights
+        Books I've Finished Reading
       </h3>
       {finishedBooks ? (
         <div className='grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5'>
