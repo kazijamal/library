@@ -57,7 +57,7 @@ function EditFinishedBook() {
     <div>
       <Link
         to='/dashboard'
-        className='text-xl underline text-gray-600 hover:text-black'
+        className='text-xl underline text-gray-600 hover:text-black dark:text-neutral-100 dark:hover:text-indigo-200'
       >
         ← Back to dashboard
       </Link>
@@ -101,7 +101,7 @@ function EditFinishedBook() {
             <div className='my-3'>
               <Link
                 to={`/finishedbooks/${finishedBook.id}`}
-                className='bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded'
+                className='bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded dark:bg-green-500/50 dark:hover:bg-green-700/50'
               >
                 View Highlights
               </Link>
@@ -109,7 +109,7 @@ function EditFinishedBook() {
           )}
           <button
             onClick={() => handleDeleteFinishedBook(finishedBook.id)}
-            className='bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded'
+            className='bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded dark:bg-red-500/50 dark:hover:bg-red-700/50'
           >
             Delete Finished Book
           </button>

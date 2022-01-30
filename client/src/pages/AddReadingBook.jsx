@@ -13,7 +13,7 @@ function AddReadingBook() {
   };
 
   return (
-    <div className='rounded-2xl shadow-xl m-auto p-10 w-full md:w-1/2'>
+    <div className='rounded-2xl shadow-xl m-auto p-10 w-full md:w-1/2 bg-white dark:bg-neutral-800'>
       <h1 className='text-3xl font-semibold text-center mb-5'>
         Add Reading Book
       </h1>
@@ -25,13 +25,13 @@ function AddReadingBook() {
             onChange={(e) => setTitle(e.target.value)}
             value={title}
             required
-            className='my-3 px-3 py-2 border border-gray-300 rounded-md w-full'
+            className='my-3 px-3 py-2 border border-gray-300 rounded-md w-full dark:bg-neutral-900 dark:border-none'
           />
         </label>
         <div className='grid place-items-center'>
           <button
             type='submit'
-            className='bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 mt-5 mx-auto rounded'
+            className='bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 mt-5 mx-auto rounded dark:bg-green-500/50 dark:hover:bg-green-700/50'
           >
             Submit
           </button>

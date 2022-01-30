@@ -26,7 +26,7 @@ function FinishedBookList() {
             <Link
               to={`/dashboard/finishedbooks/edit/${finishedBook.id}`}
               key={finishedBook.id}
-              className='rounded-lg mx-5 my-3 p-4 shadow-lg transition ease-in-out delay-150 hover:scale-105 hover:shadow-2xl'
+              className='rounded-lg mx-5 my-3 p-4 shadow-lg transition ease-in-out delay-150 hover:scale-105 hover:shadow-2xl bg-white dark:bg-neutral-800'
             >
               <img
                 src={finishedBook.imageLink}

@@ -26,12 +26,12 @@ function HighlightsForm(props) {
         type='file'
         name='highlights-file'
         required
-        className='my-3 mx-3 px-3 py-2 border border-gray-300 rounded-md'
+        className='my-3 mx-3 px-3 py-2 border border-gray-300 rounded-md dark:bg-neutral-800 dark:border-none'
       />
       <input
         type='submit'
         value='Submit'
-        className='bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded'
+        className='bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded dark:bg-green-500/50 dark:hover:bg-green-700/50'
       />
     </form>
   );

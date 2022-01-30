@@ -24,8 +24,8 @@ function App() {
         <DarkModeToggle />
         <Router>
           <Routes>
-            <Route path='/' element={<Home />} />
             <Route element={<AlreadyAuth />}>
+              <Route path='/' element={<Home />} />
               <Route path='/login' element={<Login />} />
             </Route>
             <Route path='/readingbooks/:id' element={<ReadingBook />} />
