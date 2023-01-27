@@ -18,33 +18,14 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(express.static(path.join(__dirname, 'client', 'build')));
 
-// Root route
 app.get('/api', (req, res) => {
   res.json({ message: 'Welcome to the Library API' });
 });
 
-// Use routes imported from routes directory
 app.use('/api/users', userRoutes);
 app.use('/api/finishedbooks', finishedBookRoutes);
 app.use('/api/readingbooks', readingBookRoutes);
 app.use('/api/highlights', highlightRoutes);
-
-// // Not found errors for undefined routes
-// app.use((req, res, next) => {
-//   res.status(404).json({
-//     status: 404,
-//     error: 'Not found',
-//   });
-// });
-
-// // Internal server errors
-// app.use((error, req, res, next) => {
-//   console.error(error.stack);
-//   res.status(500).json({
-//     status: 500,
-//     error: 'Internal server error',
-//   });
-// });
 
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
