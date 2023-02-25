@@ -5,7 +5,7 @@ const axios = require("axios");
 const googleBooksAPIKey = process.env.GOOGLE_BOOKS_API_KEY;
 
 // get all reading books
-router.get("/", async (res) => {
+router.get("/", async (req, res) => {
   const readingBooks = await prisma.readingBook.findMany();
   res.json(readingBooks);
 });

@@ -3,7 +3,7 @@ const router = express.Router();
 const prisma = require("../lib/prisma");
 const bcrypt = require("bcrypt");
 
-router.get("/", async (res) => {
+router.get("/", async (req, res) => {
   const users = await prisma.user.findMany();
   res.json(users);
 });

@@ -8,7 +8,7 @@ var storage = multer.memoryStorage();
 var upload = multer({ storage: storage });
 
 // get all highlights
-router.get("/", async (res) => {
+router.get("/", async (req, res) => {
   const highlights = await prisma.highlight.findMany();
   res.json(highlights);
 });

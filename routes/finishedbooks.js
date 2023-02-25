@@ -5,7 +5,7 @@ const axios = require("axios");
 const googleBooksAPIKey = process.env.GOOGLE_BOOKS_API_KEY;
 
 // get all finished books
-router.get("/", async (res) => {
+router.get("/", async (req, res) => {
   const finishedBooks = await prisma.finishedBook.findMany({
     orderBy: [{ dateFinished: "desc" }],
   });
