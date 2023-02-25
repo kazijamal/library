@@ -1,24 +1,19 @@
-import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
 import { getReadingBook } from "../services/readingBooks";
+import { ScaleLoader } from "react-spinners";
 
 function ReadingBook() {
   const { id } = useParams();
-  const [readingBook, setReadingBook] = useState();
 
-  useEffect(() => {
-    let mounted = true;
-    getReadingBook(id).then((retrievedReadingBook) => {
-      if (mounted) {
-        setReadingBook(retrievedReadingBook);
-      }
-    });
-    return () => (mounted = false);
-  }, [id]);
-
-  if (!readingBook) {
-    return <p>Loading</p>;
-  }
+  const {
+    isLoading,
+    isError,
+    data: readingBook,
+  } = useQuery({
+    queryKey: ["reading-book", id],
+    queryFn: () => getReadingBook(id),
+  });
 
   return (
     <div>
@@ -29,27 +24,35 @@ function ReadingBook() {
         ← Back to all books
       </Link>
       <div className="mt-5 text-center">
-        <img
-          src={readingBook.imageLink}
-          alt="book cover"
-          className="m-auto rounded-lg shadow-lg"
-        />
-        <h2 className="mt-5 text-3xl font-semibold">{readingBook.title}</h2>
-        {readingBook.subtitle && (
-          <h3 className="text-xl font-medium italic">{readingBook.subtitle}</h3>
+        {isLoading && <ScaleLoader></ScaleLoader>}
+        {isError && <p>Error</p>}
+        {readingBook && (
+          <>
+            <img
+              src={readingBook.imageLink}
+              alt="book cover"
+              className="m-auto rounded-lg shadow-lg"
+            />
+            <h2 className="mt-5 text-3xl font-semibold">{readingBook.title}</h2>
+            {readingBook.subtitle && (
+              <h3 className="text-xl font-medium italic">
+                {readingBook.subtitle}
+              </h3>
+            )}
+            <h4 className="mt-3 text-xl font-medium">
+              {readingBook.authors.join(", ")}
+            </h4>
+            <p>
+              Categories:{" "}
+              {readingBook.categories.length ? (
+                readingBook.categories.join(", ")
+              ) : (
+                <span>None</span>
+              )}
+            </p>
+            {readingBook.pageCount && <p>{readingBook.pageCount} pages</p>}
+          </>
         )}
-        <h4 className="mt-3 text-xl font-medium">
-          {readingBook.authors.join(", ")}
-        </h4>
-        <p>
-          Categories:{" "}
-          {readingBook.categories.length ? (
-            readingBook.categories.join(", ")
-          ) : (
-            <span>None</span>
-          )}
-        </p>
-        {readingBook.pageCount && <p>{readingBook.pageCount} pages</p>}
       </div>
     </div>
   );

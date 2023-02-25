@@ -16,12 +16,7 @@ export async function uploadHighlights(form_data) {
 export async function getFinishedBookHighlights(finishedBookId) {
   return axios
     .get(`/api/highlights/finishedbook/${finishedBookId}`)
-    .then(function (res) {
-      return res.data;
-    })
-    .catch(function (err) {
-      console.log(err);
-    });
+    .then((res) => res.data);
 }
 
 export async function getRandomHighlights(count) {
