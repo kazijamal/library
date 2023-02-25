@@ -1,14 +1,7 @@
 import axios from "axios";
 
 export async function getReadingBooks() {
-  return axios
-    .get("/api/readingbooks")
-    .then(function (res) {
-      return res.data;
-    })
-    .catch(function (err) {
-      console.log(err);
-    });
+  return axios.get("/api/readingbooks").then((res) => res.data);
 }
 
 export async function getReadingBook(id) {

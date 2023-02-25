@@ -25,12 +25,5 @@ export async function getFinishedBookHighlights(finishedBookId) {
 }
 
 export async function getRandomHighlights(count) {
-  return axios
-    .get(`/api/highlights/random/${count}`)
-    .then(function (res) {
-      return res.data;
-    })
-    .catch(function (err) {
-      console.log(err);
-    });
+  return axios.get(`/api/highlights/random/${count}`).then((res) => res.data);
 }

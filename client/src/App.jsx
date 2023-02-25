@@ -1,6 +1,6 @@
-import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
@@ -20,8 +20,8 @@ const queryClient = new QueryClient();
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <div className="background bg-neutral-50 dark:bg-neutral-900">
-        <div className="wrapper dark:text-neutral-100">
+      <div className="overflow fixed inset-0 overflow-auto bg-neutral-50 dark:bg-neutral-900">
+        <div className="m-auto max-w-6xl p-5 dark:text-neutral-100">
           <Navbar />
           <Router>
             <Routes>
@@ -55,6 +55,7 @@ function App() {
           </Router>
         </div>
       </div>
+      <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   );
 }
