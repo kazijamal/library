@@ -1,37 +1,37 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { createReadingBook } from '../services/readingBooks';
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { createReadingBook } from "../services/readingBooks";
 
 function AddReadingBook() {
   const navigate = useNavigate();
-  const [title, setTitle] = useState('');
+  const [title, setTitle] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     await createReadingBook(title);
-    navigate('/dashboard');
+    navigate("/dashboard");
   };
 
   return (
-    <div className='rounded-2xl shadow-xl m-auto p-10 w-full md:w-1/2 bg-white dark:bg-neutral-800'>
-      <h1 className='text-3xl font-semibold text-center mb-5'>
+    <div className="m-auto w-full rounded-2xl bg-white p-10 shadow-xl dark:bg-neutral-800 md:w-1/2">
+      <h1 className="mb-5 text-center text-3xl font-semibold">
         Add Reading Book
       </h1>
       <form onSubmit={handleSubmit}>
         <label>
-          <p className='text-lg font-medium'>Title</p>
+          <p className="text-lg font-medium">Title</p>
           <input
-            type='text'
+            type="text"
             onChange={(e) => setTitle(e.target.value)}
             value={title}
             required
-            className='my-3 px-3 py-2 border border-gray-300 rounded-md w-full dark:bg-neutral-900 dark:border-none'
+            className="my-3 w-full rounded-md border border-gray-300 px-3 py-2 dark:border-none dark:bg-neutral-900"
           />
         </label>
-        <div className='grid place-items-center'>
+        <div className="grid place-items-center">
           <button
-            type='submit'
-            className='bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 mt-5 mx-auto rounded dark:bg-green-500/50 dark:hover:bg-green-700/50'
+            type="submit"
+            className="mx-auto mt-5 rounded bg-green-500 py-2 px-4 font-bold text-white hover:bg-green-700 dark:bg-green-500/50 dark:hover:bg-green-700/50"
           >
             Submit
           </button>

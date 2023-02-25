@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
-import { getReadingBook } from '../services/readingBooks';
+import { useEffect, useState } from "react";
+import { useParams, Link } from "react-router-dom";
+import { getReadingBook } from "../services/readingBooks";
 
 function ReadingBook() {
   const { id } = useParams();
@@ -23,28 +23,28 @@ function ReadingBook() {
   return (
     <div>
       <Link
-        to='/'
-        className='text-xl underline text-gray-600 hover:text-black dark:text-neutral-100 dark:hover:text-indigo-200'
+        to="/"
+        className="text-xl text-gray-600 underline hover:text-black dark:text-neutral-100 dark:hover:text-indigo-200"
       >
         ← Back to all books
       </Link>
-      <div className='text-center mt-5'>
+      <div className="mt-5 text-center">
         <img
           src={readingBook.imageLink}
-          alt='book cover'
-          className='m-auto shadow-lg rounded-lg'
+          alt="book cover"
+          className="m-auto rounded-lg shadow-lg"
         />
-        <h2 className='text-3xl font-semibold mt-5'>{readingBook.title}</h2>
+        <h2 className="mt-5 text-3xl font-semibold">{readingBook.title}</h2>
         {readingBook.subtitle && (
-          <h3 className='text-xl font-medium italic'>{readingBook.subtitle}</h3>
+          <h3 className="text-xl font-medium italic">{readingBook.subtitle}</h3>
         )}
-        <h4 className='text-xl font-medium mt-3'>
-          {readingBook.authors.join(', ')}
+        <h4 className="mt-3 text-xl font-medium">
+          {readingBook.authors.join(", ")}
         </h4>
         <p>
-          Categories:{' '}
+          Categories:{" "}
           {readingBook.categories.length ? (
-            readingBook.categories.join(', ')
+            readingBook.categories.join(", ")
           ) : (
             <span>None</span>
           )}

@@ -1,5 +1,5 @@
-import { useRef } from 'react';
-import { uploadHighlights } from '../../services/highlights';
+import { useRef } from "react";
+import { uploadHighlights } from "../../services/highlights";
 
 function HighlightsForm(props) {
   const { setAlert, setFetchedHighlights } = props;
@@ -16,22 +16,22 @@ function HighlightsForm(props) {
   return (
     <form onSubmit={submit_file} ref={formRef}>
       <input
-        type='number'
-        name='finishedBookId'
+        type="number"
+        name="finishedBookId"
         value={props.finishedBookId}
         hidden
         readOnly
       />
       <input
-        type='file'
-        name='highlights-file'
+        type="file"
+        name="highlights-file"
         required
-        className='my-3 mx-3 px-3 py-2 border border-gray-300 rounded-md dark:bg-neutral-800 dark:border-none'
+        className="my-3 mx-3 rounded-md border border-gray-300 px-3 py-2 dark:border-none dark:bg-neutral-800"
       />
       <input
-        type='submit'
-        value='Submit'
-        className='bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded dark:bg-green-500/50 dark:hover:bg-green-700/50'
+        type="submit"
+        value="Submit"
+        className="rounded bg-green-500 py-2 px-4 font-bold text-white hover:bg-green-700 dark:bg-green-500/50 dark:hover:bg-green-700/50"
       />
     </form>
   );

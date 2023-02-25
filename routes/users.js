@@ -1,14 +1,14 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const prisma = require('../lib/prisma');
-const bcrypt = require('bcrypt');
+const prisma = require("../lib/prisma");
+const bcrypt = require("bcrypt");
 
-router.get('/', async (req, res) => {
+router.get("/", async (res) => {
   const users = await prisma.user.findMany();
   res.json(users);
 });
 
-router.post('/login', async (req, res) => {
+router.post("/login", async (req, res) => {
   const { username, password } = req.body;
   let token = {
     token: null,
@@ -22,6 +22,9 @@ router.post('/login', async (req, res) => {
     res.json(token);
   } else {
     bcrypt.compare(password, user.password, async function (err, result) {
+      if (err) {
+        console.log(err);
+      }
       if (result == true) {
         token.token =
           Math.random().toString(36).substring(2, 15) +
@@ -34,9 +37,12 @@ router.post('/login', async (req, res) => {
   }
 });
 
-router.post('/register', async (req, res) => {
+router.post("/register", async (req, res) => {
   const { username, password } = req.body;
   bcrypt.hash(password, 10, async function (err, hash) {
+    if (err) {
+      console.log(err);
+    }
     const user = await prisma.user.create({
       data: {
         username: username,

@@ -1,6 +1,6 @@
-import RandomHighlights from '../components/Home/RandomHighlights';
-import ReadingBookList from '../components/Home/ReadingBookList';
-import FinishedBookList from '../components/Home/FinishedBookList';
+import RandomHighlights from "../components/Home/RandomHighlights";
+import ReadingBookList from "../components/Home/ReadingBookList";
+import FinishedBookList from "../components/Home/FinishedBookList";
 
 function Home() {
   return (

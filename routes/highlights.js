@@ -1,20 +1,20 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const multer = require('multer');
-const toJSON = require('../lib/highlights-to-json');
-const prisma = require('../lib/prisma');
+const multer = require("multer");
+const toJSON = require("../lib/highlights-to-json");
+const prisma = require("../lib/prisma");
 
 var storage = multer.memoryStorage();
 var upload = multer({ storage: storage });
 
 // get all highlights
-router.get('/', async (req, res) => {
+router.get("/", async (res) => {
   const highlights = await prisma.highlight.findMany();
   res.json(highlights);
 });
 
 // get highlight with id
-router.get('/:id', async (req, res) => {
+router.get("/:id", async (req, res) => {
   const { id } = req.params;
   const highlight = await prisma.highlight.findUnique({
     where: { id: Number(id) },
@@ -23,7 +23,7 @@ router.get('/:id', async (req, res) => {
 });
 
 // get highlights for finished book with finishedBookId
-router.get('/finishedbook/:finishedBookId', async (req, res) => {
+router.get("/finishedbook/:finishedBookId", async (req, res) => {
   const { finishedBookId } = req.params;
   const highlights = await prisma.highlight.findMany({
     where: { finishedBookId: Number(finishedBookId) },
@@ -32,7 +32,7 @@ router.get('/finishedbook/:finishedBookId', async (req, res) => {
 });
 
 // get some random highlights
-router.get('/random/:count', async (req, res) => {
+router.get("/random/:count", async (req, res) => {
   const { count } = req.params;
   const highlights = await prisma.highlight.findMany({
     include: { finishedBook: true },
@@ -43,7 +43,7 @@ router.get('/random/:count', async (req, res) => {
 });
 
 // upload highlights for a finished book
-router.post('/upload', upload.single('highlights-file'), async (req, res) => {
+router.post("/upload", upload.single("highlights-file"), async (req, res) => {
   highlightsJSON = await toJSON(String(req.file.buffer));
   const finishedBookId = Number(req.body.finishedBookId);
   const data = [];

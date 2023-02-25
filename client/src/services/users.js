@@ -1,8 +1,8 @@
-import axios from 'axios';
+import axios from "axios";
 
-export function loginUser(credentials) {
+export async function loginUser(credentials) {
   return axios
-    .post('/api/users/login', credentials)
+    .post("/api/users/login", credentials)
     .then(function (res) {
       return res.data;
     })

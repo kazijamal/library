@@ -1,8 +1,8 @@
-import axios from 'axios';
+import axios from "axios";
 
 export async function getReadingBooks() {
   return axios
-    .get('/api/readingbooks')
+    .get("/api/readingbooks")
     .then(function (res) {
       return res.data;
     })
@@ -24,7 +24,7 @@ export async function getReadingBook(id) {
 
 export async function markReadingBookFinished(id, dateFinished) {
   axios
-    .post('/api/readingbooks/markfinished', { id, dateFinished })
+    .post("/api/readingbooks/markfinished", { id, dateFinished })
     .then(function (res) {
       console.log(res);
     })
@@ -46,7 +46,7 @@ export async function deleteReadingBook(id) {
 
 export async function createReadingBook(title) {
   axios
-    .post('/api/readingbooks', { title })
+    .post("/api/readingbooks", { title })
     .then(function (res) {
       console.log(res);
     })

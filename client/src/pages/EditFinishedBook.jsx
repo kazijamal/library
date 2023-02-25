@@ -1,9 +1,9 @@
-import { useEffect, useState } from 'react';
-import { Link, useParams, useNavigate } from 'react-router-dom';
-import { getFinishedBook, deleteFinishedBook } from '../services/finishedBooks';
-import { getFinishedBookHighlights } from '../services/highlights';
-import HighlightsForm from '../components/EditFinishedBook/HighlightsForm';
-import moment from 'moment';
+import { useEffect, useState } from "react";
+import { Link, useParams, useNavigate } from "react-router-dom";
+import { getFinishedBook, deleteFinishedBook } from "../services/finishedBooks";
+import { getFinishedBookHighlights } from "../services/highlights";
+import HighlightsForm from "../components/EditFinishedBook/HighlightsForm";
+import moment from "moment";
 
 function EditFinishedBook() {
   const navigate = useNavigate();
@@ -46,7 +46,7 @@ function EditFinishedBook() {
 
   const handleDeleteFinishedBook = async (id) => {
     await deleteFinishedBook(id);
-    navigate('/dashboard');
+    navigate("/dashboard");
   };
 
   if (!finishedBook || !highlights) {
@@ -56,40 +56,40 @@ function EditFinishedBook() {
   return (
     <div>
       <Link
-        to='/dashboard'
-        className='text-xl underline text-gray-600 hover:text-black dark:text-neutral-100 dark:hover:text-indigo-200'
+        to="/dashboard"
+        className="text-xl text-gray-600 underline hover:text-black dark:text-neutral-100 dark:hover:text-indigo-200"
       >
         ← Back to dashboard
       </Link>
-      <div className='text-center mt-5'>
+      <div className="mt-5 text-center">
         <img
           src={finishedBook.imageLink}
-          alt='book cover'
-          className='m-auto shadow-lg rounded-lg'
+          alt="book cover"
+          className="m-auto rounded-lg shadow-lg"
         />
-        <h2 className='text-3xl font-semibold mt-5'>{finishedBook.title}</h2>
+        <h2 className="mt-5 text-3xl font-semibold">{finishedBook.title}</h2>
         {finishedBook.subtitle && (
-          <h3 className='text-xl font-medium italic'>
+          <h3 className="text-xl font-medium italic">
             {finishedBook.subtitle}
           </h3>
         )}
-        <h4 className='text-xl font-medium mt-3'>
-          {finishedBook.authors.join(', ')}
+        <h4 className="mt-3 text-xl font-medium">
+          {finishedBook.authors.join(", ")}
         </h4>
         <p>
-          Categories:{' '}
+          Categories:{" "}
           {finishedBook.categories.length ? (
-            finishedBook.categories.join(', ')
+            finishedBook.categories.join(", ")
           ) : (
             <span>None</span>
           )}
         </p>
         {finishedBook.pageCount && <p>{finishedBook.pageCount} pages</p>}
         <p>
-          Date Finished:{' '}
-          {moment.utc(finishedBook.dateFinished).format('MMMM D, YYYY')}
+          Date Finished:{" "}
+          {moment.utc(finishedBook.dateFinished).format("MMMM D, YYYY")}
         </p>
-        <div className='my-5'>
+        <div className="my-5">
           {alert && <h3>Action completed successfully</h3>}
           {!highlights.length ? (
             <HighlightsForm
@@ -98,10 +98,10 @@ function EditFinishedBook() {
               setFetchedHighlights={setFetchedHighlights}
             />
           ) : (
-            <div className='my-3'>
+            <div className="my-3">
               <Link
                 to={`/finishedbooks/${finishedBook.id}`}
-                className='bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded dark:bg-green-500/50 dark:hover:bg-green-700/50'
+                className="rounded bg-green-500 py-2 px-4 font-bold text-white hover:bg-green-700 dark:bg-green-500/50 dark:hover:bg-green-700/50"
               >
                 View Highlights
               </Link>
@@ -109,7 +109,7 @@ function EditFinishedBook() {
           )}
           <button
             onClick={() => handleDeleteFinishedBook(finishedBook.id)}
-            className='bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded dark:bg-red-500/50 dark:hover:bg-red-700/50'
+            className="rounded bg-red-500 py-2 px-4 font-bold text-white hover:bg-red-700 dark:bg-red-500/50 dark:hover:bg-red-700/50"
           >
             Delete Finished Book
           </button>
