@@ -1,16 +1,11 @@
 import axios from "axios";
 
-export async function uploadHighlights(form_data) {
-  axios
-    .post("/api/highlights/upload", form_data, {
+export async function uploadHighlights({ formData }) {
+  return axios
+    .post("/api/highlights/upload", formData, {
       headers: { "Content-Type": "multipart/form-data" },
     })
-    .then(function (res) {
-      console.log(res);
-    })
-    .catch(function (err) {
-      console.log(err);
-    });
+    .then((res) => res);
 }
 
 export async function getFinishedBookHighlights(finishedBookId) {

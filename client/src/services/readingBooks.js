@@ -8,35 +8,16 @@ export async function getReadingBook(id) {
   return await axios.get(`/api/readingbooks/${id}`).then((res) => res.data);
 }
 
-export async function markReadingBookFinished(id, dateFinished) {
-  axios
+export async function markReadingBookFinished({ id, dateFinished }) {
+  return axios
     .post("/api/readingbooks/markfinished", { id, dateFinished })
-    .then(function (res) {
-      console.log(res);
-    })
-    .catch(function (err) {
-      console.log(err);
-    });
+    .then((res) => res);
 }
 
-export async function deleteReadingBook(id) {
-  axios
-    .delete(`/api/readingbooks/${id}`)
-    .then(function (res) {
-      console.log(res);
-    })
-    .catch(function (err) {
-      console.log(err);
-    });
+export async function deleteReadingBook({ id }) {
+  return axios.delete(`/api/readingbooks/${id}`).then((res) => res);
 }
 
-export async function createReadingBook(title) {
-  axios
-    .post("/api/readingbooks", { title })
-    .then(function (res) {
-      console.log(res);
-    })
-    .catch(function (err) {
-      console.log(err);
-    });
+export async function createReadingBook({ title }) {
+  return axios.post("/api/readingbooks", { title }).then((res) => res);
 }

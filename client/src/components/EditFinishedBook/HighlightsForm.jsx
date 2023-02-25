@@ -1,24 +1,41 @@
 import { useRef } from "react";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { uploadHighlights } from "../../services/highlights";
+import { ScaleLoader } from "react-spinners";
 
-function HighlightsForm(props) {
-  const { setAlert, setFetchedHighlights } = props;
+function HighlightsForm({ finishedBookId }) {
   const formRef = useRef(null);
 
-  const submit_file = async (e) => {
+  const queryClient = useQueryClient();
+
+  const mutation = useMutation({
+    mutationFn: uploadHighlights,
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: ["finished-book-highlights", finishedBookId],
+      });
+    },
+  });
+
+  const handleSubmit = (e) => {
     e.preventDefault();
-    const form_data = new FormData(formRef.current);
-    await uploadHighlights(form_data);
-    setAlert(true);
-    setFetchedHighlights(false);
+    const formData = new FormData(formRef.current);
+    mutation.mutate({ formData });
   };
 
+  if (mutation.isLoading)
+    return (
+      <div className="mx-auto mb-5 text-center">
+        <ScaleLoader></ScaleLoader>
+      </div>
+    );
+
   return (
-    <form onSubmit={submit_file} ref={formRef}>
+    <form onSubmit={handleSubmit} ref={formRef}>
       <input
         type="number"
         name="finishedBookId"
-        value={props.finishedBookId}
+        value={finishedBookId}
         hidden
         readOnly
       />
