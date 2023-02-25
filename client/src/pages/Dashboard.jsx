@@ -13,27 +13,30 @@ function Dashboard() {
 
   return (
     <div>
-      <button
-        onClick={handleLogout}
-        className="rounded bg-red-500 py-2 px-4 font-bold text-white hover:bg-red-700 dark:bg-red-500/50 dark:hover:bg-red-700/50"
-      >
-        Log Out
-      </button>
+      <div className="flex flex-col gap-3 sm:flex-row">
+        <Link
+          to="/dashboard/readingbooks/add"
+          className="rounded bg-green-500 py-2 px-4 text-center font-bold text-white hover:bg-green-700 dark:bg-green-500/50 dark:hover:bg-green-700/50"
+        >
+          Add Reading Book
+        </Link>
+        <Link
+          to="/dashboard/finishedbooks/add"
+          className="rounded bg-green-500 py-2 px-4 text-center font-bold text-white hover:bg-green-700 dark:bg-green-500/50 dark:hover:bg-green-700/50"
+        >
+          Add Finished Book
+        </Link>
+        <button
+          onClick={handleLogout}
+          className="rounded bg-red-500 py-2 px-4 text-center font-bold text-white hover:bg-red-700 dark:bg-red-500/50 dark:hover:bg-red-700/50"
+        >
+          Log Out
+        </button>
+      </div>
+
       <RandomHighlights />
       <ReadingBookList />
-      <Link
-        to="/dashboard/readingbooks/add"
-        className="rounded bg-green-500 py-2 px-4 font-bold text-white hover:bg-green-700 dark:bg-green-500/50 dark:hover:bg-green-700/50"
-      >
-        Add Reading Book
-      </Link>
       <FinishedBookList />
-      <Link
-        to="/dashboard/finishedbooks/add"
-        className="rounded bg-green-500 py-2 px-4 font-bold text-white hover:bg-green-700 dark:bg-green-500/50 dark:hover:bg-green-700/50"
-      >
-        Add Finished Book
-      </Link>
     </div>
   );
 }
