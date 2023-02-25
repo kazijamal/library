@@ -1,19 +1,19 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const prisma = require('../lib/prisma');
-const axios = require('axios');
+const prisma = require("../lib/prisma");
+const axios = require("axios");
 const googleBooksAPIKey = process.env.GOOGLE_BOOKS_API_KEY;
 
 // get all finished books
-router.get('/', async (req, res) => {
+router.get("/", async (res) => {
   const finishedBooks = await prisma.finishedBook.findMany({
-    orderBy: [{ dateFinished: 'desc' }],
+    orderBy: [{ dateFinished: "desc" }],
   });
   res.json(finishedBooks);
 });
 
 // get finished book with id
-router.get('/:id', async (req, res) => {
+router.get("/:id", async (req, res) => {
   const { id } = req.params;
   const finishedBook = await prisma.finishedBook.findUnique({
     where: { id: Number(id) },
@@ -22,7 +22,7 @@ router.get('/:id', async (req, res) => {
 });
 
 // create new finished book
-router.post('/', async (req, res) => {
+router.post("/", async (req, res) => {
   const { title, dateFinished } = req.body;
   const googleBooksResponse = await axios.get(
     `https://www.googleapis.com/books/v1/volumes?q=${title}&key=${googleBooksAPIKey}`
@@ -48,7 +48,7 @@ router.post('/', async (req, res) => {
 });
 
 // delete finished book with id
-router.delete('/:id', async (req, res) => {
+router.delete("/:id", async (req, res) => {
   const { id } = req.params;
   await prisma.highlight.deleteMany({
     where: {

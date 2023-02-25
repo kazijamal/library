@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
-import { getFinishedBook } from '../services/finishedBooks';
-import { getFinishedBookHighlights } from '../services/highlights';
-import moment from 'moment';
+import { useEffect, useState } from "react";
+import { useParams, Link } from "react-router-dom";
+import { getFinishedBook } from "../services/finishedBooks";
+import { getFinishedBookHighlights } from "../services/highlights";
+import moment from "moment";
 
 function FinishedBook() {
   const { id } = useParams();
@@ -31,48 +31,48 @@ function FinishedBook() {
   return (
     <div>
       <Link
-        to='/'
-        className='text-xl underline text-gray-600 hover:text-black dark:text-neutral-100 dark:hover:text-indigo-200'
+        to="/"
+        className="text-xl text-gray-600 underline hover:text-black dark:text-neutral-100 dark:hover:text-indigo-200"
       >
         ← Back to all books
       </Link>
-      <div className='text-center mt-5'>
+      <div className="mt-5 text-center">
         <img
           src={finishedBook.imageLink}
-          alt='book cover'
-          className='m-auto shadow-lg rounded-lg'
+          alt="book cover"
+          className="m-auto rounded-lg shadow-lg"
         />
-        <h2 className='text-3xl font-semibold mt-5'>{finishedBook.title}</h2>
+        <h2 className="mt-5 text-3xl font-semibold">{finishedBook.title}</h2>
         {finishedBook.subtitle && (
-          <h3 className='text-xl font-medium italic'>
+          <h3 className="text-xl font-medium italic">
             {finishedBook.subtitle}
           </h3>
         )}
-        <h4 className='text-xl font-medium mt-3'>
-          {finishedBook.authors.join(', ')}
+        <h4 className="mt-3 text-xl font-medium">
+          {finishedBook.authors.join(", ")}
         </h4>
         <p>
-          Categories:{' '}
+          Categories:{" "}
           {finishedBook.categories.length ? (
-            finishedBook.categories.join(', ')
+            finishedBook.categories.join(", ")
           ) : (
             <span>None</span>
           )}
         </p>
         {finishedBook.pageCount && <p>{finishedBook.pageCount} pages</p>}
-        <p className='mb-5'>
-          Date Finished:{' '}
-          {moment.utc(finishedBook.dateFinished).format('MMMM D, YYYY')}
+        <p className="mb-5">
+          Date Finished:{" "}
+          {moment.utc(finishedBook.dateFinished).format("MMMM D, YYYY")}
         </p>
-        <h3 className='text-2xl font-semibold mb-5'>Highlights</h3>
+        <h3 className="mb-5 text-2xl font-semibold">Highlights</h3>
         {!highlights.length ? (
           <p>No highlights for this book</p>
         ) : (
-          <ul className='text-left w-full md:w-3/4 m-auto'>
+          <ul className="m-auto w-full text-left md:w-3/4">
             {highlights.map((highlight) => (
               <li
                 key={highlight.id}
-                className='mt-5 mb-3 mx-2 rounded bg-indigo-100 p-2 dark:bg-indigo-500/25'
+                className="mx-2 mt-5 mb-3 rounded bg-indigo-100 p-2 dark:bg-indigo-500/25"
               >
                 {highlight.content}
               </li>
