@@ -18,7 +18,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(express.static(path.join(__dirname, "client", "build")));
 
-app.get("/api", (res) => {
+app.get("/api", (req, res) => {
   res.json({ message: "Welcome to the Library API" });
 });
 
@@ -27,7 +27,7 @@ app.use("/api/finishedbooks", finishedBookRoutes);
 app.use("/api/readingbooks", readingBookRoutes);
 app.use("/api/highlights", highlightRoutes);
 
-app.get("*", (res) => {
+app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "client", "build", "index.html"));
 });
 
