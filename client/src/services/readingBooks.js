@@ -5,7 +5,7 @@ export async function getReadingBooks() {
 }
 
 export async function getReadingBook(id) {
-  return await axios.get(`/api/readingbooks/${id}`).then((res) => res.data);
+  return axios.get(`/api/readingbooks/${id}`).then((res) => res.data);
 }
 
 export async function markReadingBookFinished({ id, dateFinished }) {
