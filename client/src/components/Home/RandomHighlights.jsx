@@ -1,24 +1,25 @@
-import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
 import { getRandomHighlights } from "../../services/highlights";
+import { ScaleLoader } from "react-spinners";
 
 function RandomHighlights() {
-  const [randomHighlights, setRandomHighlights] = useState([]);
-
-  useEffect(() => {
-    let mounted = true;
-    getRandomHighlights(2).then((retrievedRandomHighlights) => {
-      if (mounted) {
-        setRandomHighlights(retrievedRandomHighlights);
-      }
-    });
-    return () => (mounted = false);
-  }, []);
+  const {
+    isLoading,
+    isError,
+    data: randomHighlights,
+  } = useQuery({
+    queryKey: ["random-highlights"],
+    queryFn: () => getRandomHighlights(2),
+    refetchOnWindowFocus: false,
+  });
 
   return (
     <div className="my-5">
-      <h3 className="my-3 text-2xl font-semibold">Highlights of the Day</h3>
-      {randomHighlights ? (
+      <h3 className="my-3 text-2xl font-semibold">Random Highlights</h3>
+      {isLoading && <ScaleLoader />}
+      {isError && <p>Error</p>}
+      {randomHighlights && (
         <ul className="w-full text-left">
           {randomHighlights.map((highlight) => (
             <div key={highlight.id}>
@@ -37,8 +38,6 @@ function RandomHighlights() {
             </div>
           ))}
         </ul>
-      ) : (
-        <p>Loading</p>
       )}
     </div>
   );
