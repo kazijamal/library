@@ -14,7 +14,7 @@ router.get("/", async (req, res) => {
 });
 
 // get highlight with id
-router.get("/:id", async (req, res) => {
+router.get("/highlight/:id", async (req, res) => {
   const { id } = req.params;
   const highlight = await prisma.highlight.findUnique({
     where: { id: Number(id) },
@@ -40,6 +40,20 @@ router.get("/random/:count", async (req, res) => {
   const shuffledHighlights = highlights.sort(() => 0.5 - Math.random());
   const randomHighlights = shuffledHighlights.slice(0, count);
   res.json(randomHighlights);
+});
+
+// search highlights with query
+router.get("/search", async (req, res) => {
+  const { q } = req.query;
+  const highlights = await prisma.highlight.findMany({
+    where: {
+      content: {
+        search: q,
+      },
+    },
+    include: { finishedBook: true },
+  });
+  res.json(highlights);
 });
 
 // upload highlights for a finished book
