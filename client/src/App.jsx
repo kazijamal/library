@@ -14,6 +14,7 @@ import AddReadingBook from "./pages/AddReadingBook";
 import EditFinishedBook from "./pages/EditFinishedBook";
 import AddFinishedBook from "./pages/AddFinishedBook";
 import NotFound from "./pages/NotFound";
+import SearchHighlightsResults from "./pages/SearchHighlightsResults";
 
 const queryClient = new QueryClient();
 
@@ -31,6 +32,10 @@ function App() {
               </Route>
               <Route path="/readingbooks/:id" element={<ReadingBook />} />
               <Route path="/finishedbooks/:id" element={<FinishedBook />} />
+              <Route
+                path="/highlights/search"
+                element={<SearchHighlightsResults />}
+              />
               <Route element={<RequireAuth />}>
                 <Route path="/dashboard" element={<Dashboard />} />
                 <Route
