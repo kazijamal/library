@@ -43,7 +43,7 @@ function SearchHighlightsForm() {
             id="default-search"
             onChange={(e) => setQuery(e.target.value)}
             value={query}
-            className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-4 pl-10 text-sm text-gray-900 dark:border-neutral-700 dark:bg-neutral-800 dark:text-white dark:placeholder-gray-400"
+            className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-4 pl-10 text-gray-900 dark:border-neutral-700 dark:bg-neutral-800 dark:text-white dark:placeholder-gray-400"
             placeholder="Search for highlights containing..."
             required
           />
