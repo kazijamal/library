@@ -22,7 +22,7 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <div className="overflow fixed inset-0 overflow-auto bg-neutral-50 dark:bg-neutral-900">
-        <div className="m-auto max-w-6xl p-5 dark:text-neutral-100">
+        <div className="m-auto max-w-6xl px-3 py-5 dark:text-neutral-100">
           <Navbar />
           <Router>
             <Routes>
