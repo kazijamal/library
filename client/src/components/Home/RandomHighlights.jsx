@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { getRandomHighlights } from "../../services/highlights";
-import { ScaleLoader } from "react-spinners";
 import Highlight from "../Highlight";
+import HighlightSkeleton from "../Skeleton/HighlightSkeleton";
 
 function RandomHighlights() {
   const {
@@ -17,14 +17,14 @@ function RandomHighlights() {
   return (
     <div className="my-5">
       <h3 className="my-3 text-2xl font-semibold">Random Highlight</h3>
-      {isLoading && <ScaleLoader />}
+      {isLoading && <HighlightSkeleton />}
       {isError && <p>Error</p>}
       {randomHighlights && (
-        <ul className="w-full text-left">
+        <div className="w-full text-left">
           {randomHighlights.map((highlight) => (
             <Highlight key={highlight.id} highlight={highlight} />
           ))}
-        </ul>
+        </div>
       )}
     </div>
   );
