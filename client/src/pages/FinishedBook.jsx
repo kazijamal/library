@@ -77,16 +77,16 @@ function FinishedBook() {
           <p>No highlights for this book</p>
         ) : (
           highlights && (
-            <ul className="m-auto w-full text-left md:w-3/4">
+            <div className="m-auto w-full text-left md:w-3/4">
               {highlights.map((highlight) => (
-                <li
+                <p
                   key={highlight.id}
                   className="mx-2 mt-5 mb-3 rounded bg-indigo-100 p-2 dark:bg-indigo-500/25"
                 >
                   {highlight.content}
-                </li>
+                </p>
               ))}
-            </ul>
+            </div>
           )
         )}
       </div>

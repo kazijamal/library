@@ -32,11 +32,11 @@ function SearchHighlightsResults() {
         {isLoading && <ScaleLoader />}
         {isError && <p>Error</p>}
         {highlights && (
-          <ul className="w-full text-left">
+          <div className="w-full text-left">
             {highlights.map((highlight) => (
               <Highlight key={highlight.id} highlight={highlight} />
             ))}
-          </ul>
+          </div>
         )}
       </div>
     </div>

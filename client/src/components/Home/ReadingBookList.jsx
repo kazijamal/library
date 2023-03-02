@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { getReadingBooks } from "../../services/readingBooks";
-import { ScaleLoader } from "react-spinners";
+import BookListSkeleton from "../Skeleton/BookListSkeleton";
 
 function ReadingBookList() {
   const {
@@ -18,10 +18,10 @@ function ReadingBookList() {
       <h3 className="my-3 text-2xl font-semibold">
         What I'm Currently Reading
       </h3>
-      {isLoading && <ScaleLoader />}
+      {isLoading && <BookListSkeleton numBooks={1} />}
       {isError && <p>Error</p>}
       {readingBooks && (
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
           {readingBooks.map((readingBook) => (
             <Link
               to={`/readingbooks/${readingBook.id}`}

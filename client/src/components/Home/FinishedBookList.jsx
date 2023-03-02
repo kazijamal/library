@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { getFinishedBooks } from "../../services/finishedBooks";
-import { ScaleLoader } from "react-spinners";
+import BookListSkeleton from "../Skeleton/BookListSkeleton";
 
 function FinishedBookList() {
   const {
@@ -18,10 +18,10 @@ function FinishedBookList() {
       <h3 className="my-3 text-2xl font-semibold">
         Books I've Finished Reading
       </h3>
-      {isLoading && <ScaleLoader></ScaleLoader>}
+      {isLoading && <BookListSkeleton numBooks={10} />}
       {isError && <p>Error</p>}
       {finishedBooks && (
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
           {finishedBooks.map((finishedBook) => (
             <Link
               to={`/finishedbooks/${finishedBook.id}`}
