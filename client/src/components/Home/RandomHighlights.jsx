@@ -17,12 +17,16 @@ function RandomHighlights() {
   return (
     <div className="my-5">
       <h3 className="my-3 text-2xl font-semibold">Random Highlight</h3>
-      {isLoading && <HighlightSkeleton />}
+      {isLoading && <HighlightSkeleton includeBook={true} />}
       {isError && <p>Error</p>}
       {randomHighlights && (
         <div className="w-full text-left">
           {randomHighlights.map((highlight) => (
-            <Highlight key={highlight.id} highlight={highlight} />
+            <Highlight
+              key={highlight.id}
+              highlight={highlight}
+              includeBook={true}
+            />
           ))}
         </div>
       )}
