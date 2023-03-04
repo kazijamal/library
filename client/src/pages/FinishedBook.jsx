@@ -3,7 +3,9 @@ import { useQuery } from "@tanstack/react-query";
 import { getFinishedBook } from "../services/finishedBooks";
 import { getFinishedBookHighlights } from "../services/highlights";
 import { ScaleLoader } from "react-spinners";
+import Highlight from "../components/Highlight";
 import moment from "moment";
+import HighlightListSkeleton from "../components/Skeleton/HighlightListSkeleton";
 
 function FinishedBook() {
   const { id } = useParams();
@@ -30,7 +32,7 @@ function FinishedBook() {
     <div>
       <Link
         to="/"
-        className="text-xl text-gray-600 underline hover:text-black dark:text-neutral-100 dark:hover:text-indigo-200"
+        className="text-xl text-neutral-100 underline hover:text-indigo-200"
       >
         ← Back to all books
       </Link>
@@ -71,22 +73,23 @@ function FinishedBook() {
           </>
         )}
         <h3 className="mb-5 text-2xl font-semibold">Highlights</h3>
-        {highlightsIsLoading && <ScaleLoader></ScaleLoader>}
+        {highlightsIsLoading && (
+          <HighlightListSkeleton numHighlights={5} includeBook={false} />
+        )}
         {highlightsIsError && <p>Error</p>}
         {highlights && highlights.length == 0 ? (
           <p>No highlights for this book</p>
         ) : (
           highlights && (
-            <ul className="m-auto w-full text-left md:w-3/4">
+            <div className="m-auto w-full text-left md:w-3/4">
               {highlights.map((highlight) => (
-                <li
+                <Highlight
                   key={highlight.id}
-                  className="mx-2 mt-5 mb-3 rounded bg-indigo-100 p-2 dark:bg-indigo-500/25"
-                >
-                  {highlight.content}
-                </li>
+                  highlight={highlight}
+                  includeBook={false}
+                />
               ))}
-            </ul>
+            </div>
           )
         )}
       </div>

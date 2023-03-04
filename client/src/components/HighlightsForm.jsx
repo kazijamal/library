@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { uploadHighlights } from "../../services/highlights";
+import { uploadHighlights } from "../services/highlights";
 import { ScaleLoader } from "react-spinners";
 
 function HighlightsForm({ finishedBookId }) {
@@ -43,12 +43,12 @@ function HighlightsForm({ finishedBookId }) {
         type="file"
         name="highlights-file"
         required
-        className="my-3 mx-3 rounded-md border border-gray-300 px-3 py-2 dark:border-none dark:bg-neutral-800"
+        className="my-3 mx-3 rounded-md border border-none bg-neutral-800 px-3 py-2"
       />
       <input
         type="submit"
         value="Submit"
-        className="rounded bg-green-500 py-2 px-4 font-bold text-white hover:bg-green-700 dark:bg-green-500/50 dark:hover:bg-green-700/50"
+        className="rounded bg-green-500/50 py-2 px-4 font-bold text-white hover:bg-green-700/50"
       />
     </form>
   );
