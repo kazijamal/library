@@ -15,9 +15,7 @@ function ReadingBookList({ dashboard }) {
 
   return (
     <div className="my-5">
-      <h3 className="my-3 text-2xl font-semibold">
-        What I'm Currently Reading
-      </h3>
+      <h3 className="my-3 text-2xl font-semibold">I'm Currently Reading</h3>
       {isLoading && <BookListSkeleton numBooks={1} />}
       {isError && <p>Error</p>}
       {readingBooks && (
