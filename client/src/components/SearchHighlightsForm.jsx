@@ -16,7 +16,7 @@ function SearchHighlightsForm() {
       <form onSubmit={handleSubmit}>
         <label
           htmlFor="default-search"
-          className="sr-only mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          className="sr-only mb-2 text-sm font-medium text-white"
         >
           Search
         </label>
@@ -24,7 +24,7 @@ function SearchHighlightsForm() {
           <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
             <svg
               aria-hidden="true"
-              className="h-5 w-5 text-gray-500 dark:text-gray-400"
+              className="h-5 w-5 text-gray-400"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -43,13 +43,13 @@ function SearchHighlightsForm() {
             id="default-search"
             onChange={(e) => setQuery(e.target.value)}
             value={query}
-            className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-4 pl-10 text-gray-900 dark:border-neutral-700 dark:bg-neutral-800 dark:text-white dark:placeholder-gray-400"
+            className="block w-full rounded-lg border border-neutral-700 bg-neutral-800 p-4 pl-10 text-white placeholder-gray-400"
             placeholder="Highlights containing..."
             required
           />
           <button
             type="submit"
-            className="absolute right-2.5 bottom-2.5 rounded-lg bg-indigo-500 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-600 dark:bg-indigo-600 dark:hover:bg-indigo-700"
+            className="absolute right-2.5 bottom-2.5 rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700"
           >
             Search
           </button>

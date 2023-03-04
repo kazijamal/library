@@ -26,7 +26,7 @@ function AddFinishedBook() {
 
   return (
     <div>
-      <div className="m-auto w-full rounded-2xl bg-white p-10 shadow-xl dark:bg-neutral-800 md:w-1/2">
+      <div className="m-auto w-full rounded-2xl bg-neutral-800 p-10 shadow-xl md:w-1/2">
         <h1 className="mb-5 text-center text-3xl font-semibold">
           Add Finished Book
         </h1>
@@ -43,7 +43,7 @@ function AddFinishedBook() {
                 onChange={(e) => setTitle(e.target.value)}
                 value={title}
                 required
-                className="my-3 w-full rounded-md border border-gray-300 px-3 py-2 dark:border-none dark:bg-neutral-900"
+                className="my-3 w-full rounded-md border border-none bg-neutral-900 px-3 py-2"
               />
             </label>
             <label>
@@ -53,13 +53,13 @@ function AddFinishedBook() {
                 onChange={(e) => setDateFinished(e.target.value)}
                 value={dateFinished}
                 required
-                className="my-3 w-full rounded-md border border-gray-300 px-3 py-2 dark:border-none dark:bg-neutral-900"
+                className="my-3 w-full rounded-md border border-none bg-neutral-900 px-3 py-2"
               />
             </label>
             <div className="grid place-items-center">
               <button
                 type="submit"
-                className="mx-auto mt-5 rounded bg-green-500 py-2 px-4 font-bold text-white hover:bg-green-700 dark:bg-green-500/50 dark:hover:bg-green-700/50"
+                className="mx-auto mt-5 rounded bg-green-500 bg-green-500/50 py-2 px-4 font-bold text-white hover:bg-green-700/50"
               >
                 Submit
               </button>

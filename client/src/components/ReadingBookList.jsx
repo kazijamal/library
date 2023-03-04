@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
-import { getReadingBooks } from "../../services/readingBooks";
-import BookListSkeleton from "../Skeleton/BookListSkeleton";
+import { getReadingBooks } from "../services/readingBooks";
+import BookListSkeleton from "./Skeleton/BookListSkeleton";
 
-function ReadingBookList() {
+function ReadingBookList({ dashboard }) {
   const {
     isLoading,
     isError,
@@ -15,18 +15,20 @@ function ReadingBookList() {
 
   return (
     <div className="my-5">
-      <h3 className="my-3 text-2xl font-semibold">
-        What I'm Currently Reading
-      </h3>
+      <h3 className="my-3 text-2xl font-semibold">I'm Currently Reading</h3>
       {isLoading && <BookListSkeleton numBooks={1} />}
       {isError && <p>Error</p>}
       {readingBooks && (
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
           {readingBooks.map((readingBook) => (
             <Link
-              to={`/readingbooks/${readingBook.id}`}
+              to={
+                dashboard
+                  ? `/dashboard/readingbooks/edit/${readingBook.id}`
+                  : `/readingbooks/${readingBook.id}`
+              }
               key={readingBook.id}
-              className="mx-5 my-3 rounded-lg bg-white p-4 shadow-lg transition delay-150 ease-in-out hover:scale-105 hover:shadow-2xl dark:bg-neutral-800"
+              className="mx-5 my-3 rounded-lg bg-neutral-800 p-4 shadow-lg transition delay-150 ease-in-out hover:scale-105 hover:shadow-2xl"
             >
               <img
                 src={readingBook.imageLink}

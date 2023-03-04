@@ -2,7 +2,7 @@ import { useParams, Link, useNavigate } from "react-router-dom";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { getFinishedBook, deleteFinishedBook } from "../services/finishedBooks";
 import { getFinishedBookHighlights } from "../services/highlights";
-import HighlightsForm from "../components/EditFinishedBook/HighlightsForm";
+import HighlightsForm from "../components/HighlightsForm";
 import { ScaleLoader } from "react-spinners";
 import moment from "moment";
 
@@ -46,7 +46,7 @@ function EditFinishedBook() {
     <div>
       <Link
         to="/dashboard"
-        className="text-xl text-gray-600 underline hover:text-black dark:text-neutral-100 dark:hover:text-indigo-200"
+        className="text-xl text-neutral-100 underline hover:text-indigo-200"
       >
         ← Back to dashboard
       </Link>
@@ -97,7 +97,7 @@ function EditFinishedBook() {
               <div className="my-3">
                 <Link
                   to={`/finishedbooks/${finishedBook.id}`}
-                  className="rounded bg-green-500 py-2 px-4 font-bold text-white hover:bg-green-700 dark:bg-green-500/50 dark:hover:bg-green-700/50"
+                  className="rounded bg-green-500/50 py-2 px-4 font-bold text-white hover:bg-green-700/50"
                 >
                   View Highlights
                 </Link>
@@ -110,7 +110,7 @@ function EditFinishedBook() {
           ) : (
             <button
               onClick={() => handleDeleteFinishedBook(finishedBook.id)}
-              className="rounded bg-red-500 py-2 px-4 font-bold text-white hover:bg-red-700 dark:bg-red-500/50 dark:hover:bg-red-700/50"
+              className="rounded bg-red-500/50 py-2 px-4 font-bold text-white hover:bg-red-700/50"
             >
               Delete Finished Book
             </button>

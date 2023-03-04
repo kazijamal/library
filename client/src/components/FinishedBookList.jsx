@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
-import { getFinishedBooks } from "../../services/finishedBooks";
-import BookListSkeleton from "../Skeleton/BookListSkeleton";
+import { getFinishedBooks } from "../services/finishedBooks";
+import BookListSkeleton from "./Skeleton/BookListSkeleton";
 
-function FinishedBookList() {
+function FinishedBookList({ dashboard }) {
   const {
     isLoading,
     isError,
@@ -15,18 +15,20 @@ function FinishedBookList() {
 
   return (
     <div className="my-5">
-      <h3 className="my-3 text-2xl font-semibold">
-        Books I've Finished Reading
-      </h3>
+      <h3 className="my-3 text-2xl font-semibold">Books I've Read</h3>
       {isLoading && <BookListSkeleton numBooks={10} />}
       {isError && <p>Error</p>}
       {finishedBooks && (
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
           {finishedBooks.map((finishedBook) => (
             <Link
-              to={`/finishedbooks/${finishedBook.id}`}
+              to={
+                dashboard
+                  ? `/dashboard/finishedbooks/edit/${finishedBook.id}`
+                  : `/finishedbooks/${finishedBook.id}`
+              }
               key={finishedBook.id}
-              className="mx-5 my-3 rounded-lg bg-white p-4 shadow-lg transition delay-150 ease-in-out hover:scale-105 hover:shadow-2xl dark:bg-neutral-800"
+              className="mx-5 my-3 rounded-lg bg-neutral-800 p-4 shadow-lg transition delay-150 ease-in-out hover:scale-105 hover:shadow-2xl"
             >
               <img
                 src={finishedBook.imageLink}
