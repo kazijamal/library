@@ -1,15 +1,15 @@
-import RandomHighlights from "../components/Home/RandomHighlights";
-import SearchHighlightsForm from "../components/Home/SearchHighlightsForm";
-import ReadingBookList from "../components/Home/ReadingBookList";
-import FinishedBookList from "../components/Home/FinishedBookList";
+import RandomHighlights from "../components/RandomHighlights";
+import SearchHighlightsForm from "../components/SearchHighlightsForm";
+import ReadingBookList from "../components/ReadingBookList";
+import FinishedBookList from "../components/FinishedBookList";
 
 function Home() {
   return (
     <div>
       <RandomHighlights />
       <SearchHighlightsForm />
-      <ReadingBookList />
-      <FinishedBookList />
+      <ReadingBookList dashboard={false} />
+      <FinishedBookList dashboard={false} />
     </div>
   );
 }

@@ -21,7 +21,7 @@ function SearchHighlightsResults() {
     <div>
       <Link
         to="/"
-        className="text-xl text-gray-600 underline hover:text-black dark:text-neutral-100 dark:hover:text-indigo-200"
+        className="text-xl text-neutral-100 underline hover:text-indigo-200"
       >
         ← Back to home
       </Link>

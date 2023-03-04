@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
-import { getRandomHighlights } from "../../services/highlights";
-import Highlight from "../Highlight";
-import HighlightSkeleton from "../Skeleton/HighlightSkeleton";
+import { getRandomHighlights } from "../services/highlights";
+import Highlight from "./Highlight";
+import HighlightSkeleton from "./Skeleton/HighlightSkeleton";
 
 function RandomHighlights() {
   const {

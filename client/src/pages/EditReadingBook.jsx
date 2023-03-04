@@ -55,7 +55,7 @@ function EditReadingBook() {
     <div>
       <Link
         to="/dashboard"
-        className="text-xl text-gray-600 underline hover:text-black dark:text-neutral-100 dark:hover:text-indigo-200"
+        className="text-xl text-neutral-100 underline hover:text-indigo-200"
       >
         ← Back to dashboard
       </Link>
@@ -99,13 +99,13 @@ function EditReadingBook() {
                     onChange={(e) => setDateFinished(e.target.value)}
                     value={dateFinished}
                     required
-                    className="my-3 rounded-md border border-gray-300 px-3 py-2 dark:border-none dark:bg-neutral-800"
+                    className="my-3 rounded-md border border-none bg-neutral-800 px-3 py-2"
                   />
                 </label>
                 <br />
                 <button
                   type="submit"
-                  className="rounded bg-green-500 py-2 px-4 font-bold text-white hover:bg-green-700 dark:bg-green-500/50 dark:hover:bg-green-700/50"
+                  className="rounded bg-green-500/50 py-2 px-4 font-bold text-white hover:bg-green-700/50"
                 >
                   Mark Reading Book as Finished
                 </button>
@@ -117,7 +117,7 @@ function EditReadingBook() {
             ) : (
               <button
                 onClick={() => handleDeleteReadingBook(readingBook.id)}
-                className="rounded bg-red-500 py-2 px-4 font-bold text-white hover:bg-red-700 dark:bg-red-500/50 dark:hover:bg-red-700/50"
+                className="rounded bg-red-500/50 py-2 px-4 font-bold text-white hover:bg-red-700/50"
               >
                 Delete Reading Book
               </button>
