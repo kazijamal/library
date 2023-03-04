@@ -48,7 +48,7 @@ router.get("/search", async (req, res) => {
   const highlights = await prisma.highlight.findMany({
     where: {
       content: {
-        search: q,
+        search: q.replace(/[\s\n\t]/g, "_"),
       },
     },
     include: { finishedBook: true },

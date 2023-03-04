@@ -1,8 +1,8 @@
 import { useSearchParams, Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { searchHighlights } from "../services/highlights";
-import { ScaleLoader } from "react-spinners";
 import Highlight from "../components/Highlight";
+import HighlightListSkeleton from "../components/Skeleton/HighlightListSkeleton";
 
 function SearchHighlightsResults() {
   const [searchParams] = useSearchParams();
@@ -29,14 +29,24 @@ function SearchHighlightsResults() {
         <h3 className="my-3 text-2xl font-semibold">
           Highlights containing "{query}"
         </h3>
-        {isLoading && <ScaleLoader />}
+        {isLoading && (
+          <HighlightListSkeleton numHighlights={5} includeBook={true} />
+        )}
         {isError && <p>Error</p>}
-        {highlights && (
-          <div className="w-full text-left">
-            {highlights.map((highlight) => (
-              <Highlight key={highlight.id} highlight={highlight} />
-            ))}
-          </div>
+        {highlights && highlights.length == 0 ? (
+          <p>No highlights found containing "{query}"</p>
+        ) : (
+          highlights && (
+            <div className="m-auto w-full text-left md:w-3/4">
+              {highlights.map((highlight) => (
+                <Highlight
+                  key={highlight.id}
+                  highlight={highlight}
+                  includeBook={true}
+                />
+              ))}
+            </div>
+          )
         )}
       </div>
     </div>
