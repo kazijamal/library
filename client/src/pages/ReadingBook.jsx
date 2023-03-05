@@ -1,7 +1,7 @@
 import { useParams, Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { getReadingBook } from "../services/readingBooks";
-import { ScaleLoader } from "react-spinners";
+import BookDetailsSkeleton from "../components/Skeleton/BookDetailsSkeleton";
 
 function ReadingBook() {
   const { id } = useParams();
@@ -24,7 +24,7 @@ function ReadingBook() {
         ← Back to all books
       </Link>
       <div className="mt-5 text-center">
-        {isLoading && <ScaleLoader></ScaleLoader>}
+        {isLoading && <BookDetailsSkeleton />}
         {isError && <p>Error</p>}
         {readingBook && (
           <>

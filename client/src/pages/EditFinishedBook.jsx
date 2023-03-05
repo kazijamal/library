@@ -5,6 +5,7 @@ import { getFinishedBookHighlights } from "../services/highlights";
 import HighlightsForm from "../components/HighlightsForm";
 import { ScaleLoader } from "react-spinners";
 import moment from "moment";
+import BookDetailsSkeleton from "../components/Skeleton/BookDetailsSkeleton";
 
 function EditFinishedBook() {
   const navigate = useNavigate();
@@ -51,7 +52,7 @@ function EditFinishedBook() {
         ← Back to dashboard
       </Link>
       <div className="mt-5 text-center">
-        {finishedBookIsLoading && <ScaleLoader></ScaleLoader>}
+        {finishedBookIsLoading && <BookDetailsSkeleton />}
         {finishedBookIsError && <p>Error</p>}
         {finishedBook && (
           <>

@@ -2,9 +2,9 @@ import { useParams, Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { getFinishedBook } from "../services/finishedBooks";
 import { getFinishedBookHighlights } from "../services/highlights";
-import { ScaleLoader } from "react-spinners";
 import Highlight from "../components/Highlight";
 import moment from "moment";
+import BookDetailsSkeleton from "../components/Skeleton/BookDetailsSkeleton";
 import HighlightListSkeleton from "../components/Skeleton/HighlightListSkeleton";
 
 function FinishedBook() {
@@ -37,7 +37,7 @@ function FinishedBook() {
         ← Back to all books
       </Link>
       <div className="mt-5 text-center">
-        {finishedBookIsLoading && <ScaleLoader></ScaleLoader>}
+        {finishedBookIsLoading && <BookDetailsSkeleton />}
         {finishedBookIsError && <p>Error</p>}
         {finishedBook && (
           <>
@@ -45,6 +45,8 @@ function FinishedBook() {
               src={finishedBook.imageLink}
               alt="book cover"
               className="m-auto rounded-lg shadow-lg"
+              width="128"
+              height="193"
             />
             <h2 className="mt-5 text-3xl font-semibold">
               {finishedBook.title}
