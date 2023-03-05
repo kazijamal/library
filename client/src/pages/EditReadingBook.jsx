@@ -7,6 +7,7 @@ import {
   deleteReadingBook,
 } from "../services/readingBooks";
 import { ScaleLoader } from "react-spinners";
+import BookDetailsSkeleton from "../components/Skeleton/BookDetailsSkeleton";
 
 function EditReadingBook() {
   const navigate = useNavigate();
@@ -60,7 +61,7 @@ function EditReadingBook() {
         ← Back to dashboard
       </Link>
       <div className="mt-5 text-center">
-        {isLoading && <ScaleLoader></ScaleLoader>}
+        {isLoading && <BookDetailsSkeleton />}
         {isError && <p>Error</p>}
         {readingBook && (
           <>
