@@ -5,7 +5,7 @@ import HighlightSkeleton from "./Skeleton/HighlightSkeleton";
 
 function RandomHighlights() {
   const {
-    isLoading,
+    isFetching,
     isError,
     data: randomHighlights,
   } = useQuery({
@@ -17,9 +17,9 @@ function RandomHighlights() {
   return (
     <div className="my-5">
       <h3 className="my-3 text-2xl font-semibold">Random Highlight</h3>
-      {isLoading && <HighlightSkeleton includeBook={true} />}
+      {isFetching && <HighlightSkeleton includeBook={true} />}
       {isError && <p>Error</p>}
-      {randomHighlights && (
+      {!isFetching && randomHighlights && (
         <div className="w-full text-left">
           {randomHighlights.map((highlight) => (
             <Highlight

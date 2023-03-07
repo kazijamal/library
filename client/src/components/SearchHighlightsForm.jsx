@@ -12,7 +12,6 @@ function SearchHighlightsForm() {
 
   return (
     <div className="my-5">
-      <h3 className="my-3 text-2xl font-semibold">Search Highlights</h3>
       <form onSubmit={handleSubmit}>
         <label
           htmlFor="default-search"
@@ -44,7 +43,7 @@ function SearchHighlightsForm() {
             onChange={(e) => setQuery(e.target.value)}
             value={query}
             className="block w-full rounded-lg border border-neutral-700 bg-neutral-800 p-4 pl-10 text-white placeholder-gray-400"
-            placeholder="Highlights containing..."
+            placeholder="Search highlights..."
             required
           />
           <button

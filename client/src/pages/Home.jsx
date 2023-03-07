@@ -6,8 +6,8 @@ import FinishedBookList from "../components/FinishedBookList";
 function Home() {
   return (
     <div>
-      <RandomHighlights />
       <SearchHighlightsForm />
+      <RandomHighlights />
       <ReadingBookList dashboard={false} />
       <FinishedBookList dashboard={false} />
     </div>
