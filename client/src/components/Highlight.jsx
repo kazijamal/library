@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 function Highlight({ highlight, includeBook }) {
   return (
     <div>
-      <p className="mx-2 mt-5 mb-2 rounded bg-indigo-500/25 p-2">
+      <p className="mx-2 mt-5 mb-2 rounded-lg bg-indigo-500/25 p-3">
         {highlight.content}
       </p>
       {includeBook && (
