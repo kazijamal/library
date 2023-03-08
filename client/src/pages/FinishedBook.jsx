@@ -48,11 +48,11 @@ function FinishedBook() {
               width="128"
               height="193"
             />
-            <h2 className="mt-5 text-3xl font-semibold">
+            <h2 className="m-auto mt-5 max-w-lg text-3xl font-semibold">
               {finishedBook.title}
             </h2>
             {finishedBook.subtitle && (
-              <h3 className="text-xl font-medium italic">
+              <h3 className="m-auto max-w-lg text-xl italic">
                 {finishedBook.subtitle}
               </h3>
             )}

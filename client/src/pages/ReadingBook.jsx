@@ -33,9 +33,11 @@ function ReadingBook() {
               alt="book cover"
               className="m-auto rounded-lg shadow-lg"
             />
-            <h2 className="mt-5 text-3xl font-semibold">{readingBook.title}</h2>
+            <h2 className="m-auto mt-5 max-w-lg text-3xl font-semibold">
+              {readingBook.title}
+            </h2>
             {readingBook.subtitle && (
-              <h3 className="text-xl font-medium italic">
+              <h3 className="m-auto max-w-lg text-xl italic">
                 {readingBook.subtitle}
               </h3>
             )}

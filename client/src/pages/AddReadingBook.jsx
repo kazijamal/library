@@ -24,7 +24,7 @@ function AddReadingBook() {
   };
 
   return (
-    <div className="m-auto w-full rounded-2xl bg-neutral-800 p-10 shadow-xl md:w-1/2">
+    <div className="m-auto w-full rounded-2xl bg-gray-800 p-10 shadow-xl md:w-1/2">
       <h1 className="mb-5 text-center text-3xl font-semibold">
         Add Reading Book
       </h1>
@@ -41,7 +41,7 @@ function AddReadingBook() {
               onChange={(e) => setTitle(e.target.value)}
               value={title}
               required
-              className="my-3 w-full rounded-md border border-none bg-neutral-900 px-3 py-2"
+              className="my-3 w-full rounded-md border border-none bg-gray-900 px-3 py-2"
             />
           </label>
           <div className="grid place-items-center">

@@ -17,7 +17,7 @@ function BookCard({ book, type, dashboard }) {
     <Link
       to={getLink(book, type, dashboard)}
       key={book.id}
-      className="mx-5 my-3 rounded-lg border border-neutral-700 bg-neutral-800 p-4 transition-colors delay-75 ease-in-out hover:bg-indigo-500/10"
+      className="mx-5 my-3 rounded-lg border border-neutral-700 bg-gray-800 p-3 transition-colors delay-75 ease-in-out hover:bg-indigo-800/25"
     >
       <img
         src={book.imageLink}

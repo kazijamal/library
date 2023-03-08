@@ -43,7 +43,7 @@ function HighlightsForm({ finishedBookId }) {
         type="file"
         name="highlights-file"
         required
-        className="my-3 mx-3 rounded-md border border-none bg-neutral-800 px-3 py-2"
+        className="my-3 mx-3 rounded-md border border-none bg-gray-800 px-3 py-2"
       />
       <input
         type="submit"
