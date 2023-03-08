@@ -100,7 +100,7 @@ function EditReadingBook() {
                     onChange={(e) => setDateFinished(e.target.value)}
                     value={dateFinished}
                     required
-                    className="my-3 rounded-md border border-none bg-neutral-800 px-3 py-2"
+                    className="my-3 rounded-md border border-none bg-gray-800 px-3 py-2"
                   />
                 </label>
                 <br />
