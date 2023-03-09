@@ -5,7 +5,7 @@ function NotFound() {
     <div>
       <Link
         to="/"
-        className="text-xl text-neutral-100 underline hover:text-indigo-200"
+        className="text-xl text-gray-100 underline hover:text-indigo-200"
       >
         ← Back home
       </Link>
