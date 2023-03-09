@@ -11,7 +11,7 @@ function Highlight({ highlight, includeBook }) {
           Highlight from{" "}
           <Link
             to={`/finishedbooks/${highlight.finishedBook.id}`}
-            className="font-medium hover:text-indigo-200 hover:underline"
+            className="underline underline-offset-2 hover:text-indigo-200"
           >
             {highlight.finishedBook.title}
           </Link>

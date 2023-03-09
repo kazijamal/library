@@ -11,7 +11,7 @@ function SearchHighlightsForm() {
   };
 
   return (
-    <div className="my-5">
+    <div className="my-5 mx-2">
       <form onSubmit={handleSubmit}>
         <label
           htmlFor="default-search"
@@ -42,7 +42,7 @@ function SearchHighlightsForm() {
             id="default-search"
             onChange={(e) => setQuery(e.target.value)}
             value={query}
-            className="block w-full rounded-lg border border-neutral-700 bg-gray-800 p-4 pl-10 text-white placeholder-gray-400"
+            className="block w-full rounded-lg bg-gray-800 p-4 pl-10 text-white placeholder-gray-400"
             placeholder="Search highlights..."
             required
           />
