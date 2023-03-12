@@ -2,53 +2,52 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 datasource db {
-  provider            = "postgresql"
-  url                 = env("DATABASE_URL")
-  shadowDatabaseUrl   = env("SHADOW_DATABASE_URL")
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
 }
 
 generator client {
-  provider = "prisma-client-js"
+  provider        = "prisma-client-js"
   previewFeatures = ["fullTextSearch", "fullTextIndex"]
 }
 
 model User {
-  id        Int      @default(autoincrement()) @id
-  username  String   @unique
-  password  String
+  id       Int    @id @default(autoincrement())
+  username String @unique
+  password String
 }
 
 model FinishedBook {
-  id              Int           @default(autoincrement()) @id
-  createdAt       DateTime      @default(now())
-  title           String
-  highlights      Highlight[]
-  volumeId        String
-  subtitle        String?
-  authors         String[]
-  pageCount       Int?
-  categories      String[]
-  imageLink       String
-  dateFinished    DateTime
+  id           Int         @id @default(autoincrement())
+  createdAt    DateTime    @default(now())
+  title        String
+  highlights   Highlight[]
+  volumeId     String
+  subtitle     String?
+  authors      String[]
+  pageCount    Int?
+  categories   String[]
+  imageLink    String
+  dateFinished DateTime
 }
 
 model ReadingBook {
-  id              Int      @default(autoincrement()) @id
-  createdAt       DateTime @default(now())
-  title           String
-  volumeId        String
-  subtitle        String?
-  authors         String[]
-  pageCount       Int?
-  categories      String[]
-  imageLink       String
+  id         Int      @id @default(autoincrement())
+  createdAt  DateTime @default(now())
+  title      String
+  volumeId   String
+  subtitle   String?
+  authors    String[]
+  pageCount  Int?
+  categories String[]
+  imageLink  String
 }
 
 model Highlight {
-  id                Int             @default(autoincrement()) @id
-  finishedBook      FinishedBook    @relation(fields: [finishedBookId], references: [id])
-  finishedBookId    Int
-  color             String
-  content           String
-  location          Int
+  id             Int          @id @default(autoincrement())
+  finishedBook   FinishedBook @relation(fields: [finishedBookId], references: [id])
+  finishedBookId Int
+  color          String
+  content        String
+  location       Int
 }
