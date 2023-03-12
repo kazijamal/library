@@ -22,7 +22,7 @@ function BookCard({ book, type, dashboard }) {
       <img
         src={book.imageLink}
         alt="book cover"
-        className="m-auto mb-3 w-full rounded-lg"
+        className="m-auto mb-3 w-full rounded-md"
       />
       <p className="text-md text-center font-medium">{book.title}</p>
     </Link>
