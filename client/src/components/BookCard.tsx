@@ -1,6 +1,13 @@
 import { Link } from "react-router-dom";
+import { ReadingBook, FinishedBook } from "@prisma/client";
 
-const getLink = (book, type, dashboard) => {
+type BookCardProps = {
+  book: ReadingBook | FinishedBook;
+  type: "reading-book" | "finished-book";
+  dashboard: boolean;
+};
+
+const getLink = ({ book, type, dashboard }: BookCardProps) => {
   if (type == "reading-book") {
     return dashboard
       ? `/dashboard/readingbooks/edit/${book.id}`
@@ -9,13 +16,15 @@ const getLink = (book, type, dashboard) => {
     return dashboard
       ? `/dashboard/finishedbooks/edit/${book.id}`
       : `/finishedbooks/${book.id}`;
+  } else {
+    return "";
   }
 };
 
-function BookCard({ book, type, dashboard }) {
+function BookCard({ book, type, dashboard }: BookCardProps) {
   return (
     <Link
-      to={getLink(book, type, dashboard)}
+      to={getLink({ book, type, dashboard })}
       key={book.id}
       className="mx-5 my-3 rounded-lg bg-gray-800 p-3 transition hover:bg-gray-700 hover:text-white hover:shadow-lg"
     >

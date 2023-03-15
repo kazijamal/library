@@ -1,4 +1,14 @@
 import { Link } from "react-router-dom";
+import { Highlight as HighlightType, FinishedBook } from "@prisma/client";
+
+type HighlightWithBook = HighlightType & {
+  finishedBook: FinishedBook;
+};
+
+type HighlightProps = {
+  highlight: HighlightType | HighlightWithBook;
+  includeBook: boolean;
+};
 
 function Highlight({ highlight, includeBook }: HighlightProps) {
   return (

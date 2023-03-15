@@ -9,7 +9,8 @@ import BookDetailsSkeleton from "../components/Skeleton/BookDetailsSkeleton";
 
 function EditFinishedBook() {
   const navigate = useNavigate();
-  const { id } = useParams();
+  const params = useParams();
+  const id = Number(params.id);
 
   const queryClient = useQueryClient();
 
@@ -39,7 +40,7 @@ function EditFinishedBook() {
     },
   });
 
-  const handleDeleteFinishedBook = (id) => {
+  const handleDeleteFinishedBook = (id: number) => {
     deleteFinishedBookMutation.mutate({ id });
   };
 

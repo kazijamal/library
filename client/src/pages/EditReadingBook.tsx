@@ -11,7 +11,8 @@ import BookDetailsSkeleton from "../components/Skeleton/BookDetailsSkeleton";
 
 function EditReadingBook() {
   const navigate = useNavigate();
-  const { id } = useParams();
+  const params = useParams();
+  const id = Number(params.id);
   const [dateFinished, setDateFinished] = useState("");
 
   const queryClient = useQueryClient();
@@ -43,12 +44,12 @@ function EditReadingBook() {
     },
   });
 
-  const handleMarkReadingBookFinished = (e) => {
+  const handleMarkReadingBookFinished = (e: React.FormEvent) => {
     e.preventDefault();
     markReadingBookFinishedMutation.mutate({ id, dateFinished });
   };
 
-  const handleDeleteReadingBook = (id) => {
+  const handleDeleteReadingBook = (id: number) => {
     deleteReadingBookMutation.mutate({ id });
   };
 

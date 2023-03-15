@@ -6,9 +6,11 @@ import Highlight from "../components/Highlight";
 import moment from "moment";
 import BookDetailsSkeleton from "../components/Skeleton/BookDetailsSkeleton";
 import HighlightListSkeleton from "../components/Skeleton/HighlightListSkeleton";
+import { Highlight as HighlightType } from "@prisma/client";
 
 function FinishedBook() {
-  const { id } = useParams();
+  const params = useParams();
+  const id = Number(params.id);
 
   const {
     isLoading: finishedBookIsLoading,
@@ -84,7 +86,7 @@ function FinishedBook() {
         ) : (
           highlights && (
             <div className="m-auto w-full text-left md:w-3/4">
-              {highlights.map((highlight) => (
+              {highlights.map((highlight: HighlightType) => (
                 <Highlight
                   key={highlight.id}
                   highlight={highlight}

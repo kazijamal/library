@@ -4,7 +4,8 @@ import { getReadingBook } from "../services/readingBooks";
 import BookDetailsSkeleton from "../components/Skeleton/BookDetailsSkeleton";
 
 function ReadingBook() {
-  const { id } = useParams();
+  const params = useParams();
+  const id = Number(params.id);
 
   const {
     isLoading,

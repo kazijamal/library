@@ -6,7 +6,7 @@ import HighlightListSkeleton from "../components/Skeleton/HighlightListSkeleton"
 
 function SearchHighlightsResults() {
   const [searchParams] = useSearchParams();
-  const query = searchParams.get("q");
+  const query = searchParams.get("q") ?? "";
 
   const {
     isLoading,

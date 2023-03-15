@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { getReadingBooks } from "../services/readingBooks";
 import BookListSkeleton from "./Skeleton/BookListSkeleton";
 import BookCard from "./BookCard";
+import { ReadingBook } from "@prisma/client";
 
 type ReadingBookListProps = {
   dashboard: boolean;
@@ -24,7 +25,7 @@ function ReadingBookList({ dashboard }: ReadingBookListProps) {
       {isError && <p>Error</p>}
       {readingBooks && (
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
-          {readingBooks.map((readingBook) => (
+          {readingBooks.map((readingBook: ReadingBook) => (
             <BookCard
               key={readingBook.id}
               book={readingBook}
