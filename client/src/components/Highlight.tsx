@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-function Highlight({ highlight, includeBook }) {
+function Highlight({ highlight, includeBook }: HighlightProps) {
   return (
     <div>
       <p className="mx-2 mt-5 mb-2 rounded-lg bg-indigo-500/25 p-3">

@@ -3,7 +3,11 @@ import { getReadingBooks } from "../services/readingBooks";
 import BookListSkeleton from "./Skeleton/BookListSkeleton";
 import BookCard from "./BookCard";
 
-function ReadingBookList({ dashboard }) {
+type ReadingBookListProps = {
+  dashboard: boolean;
+};
+
+function ReadingBookList({ dashboard }: ReadingBookListProps) {
   const {
     isLoading,
     isError,

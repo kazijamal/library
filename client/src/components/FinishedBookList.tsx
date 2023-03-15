@@ -3,7 +3,11 @@ import { getFinishedBooks } from "../services/finishedBooks";
 import BookListSkeleton from "./Skeleton/BookListSkeleton";
 import BookCard from "./BookCard";
 
-function FinishedBookList({ dashboard }) {
+type FinishedBookListProps = {
+  dashboard: boolean;
+};
+
+function FinishedBookList({ dashboard }: FinishedBookListProps) {
   const {
     isLoading,
     isError,

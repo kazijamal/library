@@ -5,7 +5,7 @@ function SearchHighlightsForm() {
   const navigate = useNavigate();
   const [query, setQuery] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     navigate(`/highlights/search?q=${query}`);
   };

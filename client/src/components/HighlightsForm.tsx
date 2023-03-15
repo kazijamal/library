@@ -3,7 +3,11 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { uploadHighlights } from "../services/highlights";
 import { ScaleLoader } from "react-spinners";
 
-function HighlightsForm({ finishedBookId }) {
+type HighlightsFormProps = {
+  finishedBookId: number;
+};
+
+function HighlightsForm({ finishedBookId }: HighlightsFormProps) {
   const formRef = useRef(null);
 
   const queryClient = useQueryClient();
@@ -17,7 +21,7 @@ function HighlightsForm({ finishedBookId }) {
     },
   });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const formData = new FormData(formRef.current);
     mutation.mutate({ formData });
