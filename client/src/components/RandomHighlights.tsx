@@ -2,6 +2,11 @@ import { useQuery } from "@tanstack/react-query";
 import { getRandomHighlights } from "../services/highlights";
 import Highlight from "./Highlight";
 import HighlightSkeleton from "./Skeleton/HighlightSkeleton";
+import { Highlight as HighlightType, FinishedBook } from "@prisma/client";
+
+type HighlightWithBook = HighlightType & {
+  finishedBook: FinishedBook;
+};
 
 function RandomHighlights() {
   const {
@@ -21,7 +26,7 @@ function RandomHighlights() {
       {isError && <p>Error</p>}
       {!isFetching && randomHighlights && (
         <div className="w-full text-left">
-          {randomHighlights.map((highlight) => (
+          {randomHighlights.map((highlight: HighlightWithBook) => (
             <Highlight
               key={highlight.id}
               highlight={highlight}

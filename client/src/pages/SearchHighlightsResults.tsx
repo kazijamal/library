@@ -3,6 +3,11 @@ import { useQuery } from "@tanstack/react-query";
 import { searchHighlights } from "../services/highlights";
 import Highlight from "../components/Highlight";
 import HighlightListSkeleton from "../components/Skeleton/HighlightListSkeleton";
+import { Highlight as HighlightType, FinishedBook } from "@prisma/client";
+
+type HighlightWithBook = HighlightType & {
+  finishedBook: FinishedBook;
+};
 
 function SearchHighlightsResults() {
   const [searchParams] = useSearchParams();
@@ -38,7 +43,7 @@ function SearchHighlightsResults() {
         ) : (
           highlights && (
             <div className="m-auto w-full text-left md:w-3/4">
-              {highlights.map((highlight) => (
+              {highlights.map((highlight: HighlightWithBook) => (
                 <Highlight
                   key={highlight.id}
                   highlight={highlight}

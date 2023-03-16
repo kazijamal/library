@@ -23,8 +23,10 @@ function HighlightsForm({ finishedBookId }: HighlightsFormProps) {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const formData = new FormData(formRef.current);
-    mutation.mutate({ formData });
+    if (formRef.current) {
+      const formData = new FormData(formRef.current);
+      mutation.mutate({ formData });
+    }
   };
 
   if (mutation.isLoading)

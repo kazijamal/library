@@ -20,10 +20,12 @@ function Highlight({ highlight, includeBook }: HighlightProps) {
         <p className="text-md mx-3 mb-5">
           Highlight from{" "}
           <Link
-            to={`/finishedbooks/${highlight.finishedBook.id}`}
+            to={`/finishedbooks/${
+              (highlight as HighlightWithBook).finishedBook.id
+            }`}
             className="underline underline-offset-2 hover:text-indigo-200"
           >
-            {highlight.finishedBook.title}
+            {(highlight as HighlightWithBook).finishedBook.title}
           </Link>
         </p>
       )}
