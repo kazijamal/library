@@ -4,6 +4,7 @@ import { searchHighlights } from "../services/highlights";
 import Highlight from "../components/Highlight";
 import HighlightListSkeleton from "../components/Skeleton/HighlightListSkeleton";
 import { Highlight as HighlightType, FinishedBook } from "@prisma/client";
+import NavigateLink from "../components/NavigateLink";
 
 type HighlightWithBook = HighlightType & {
   finishedBook: FinishedBook;
@@ -24,12 +25,7 @@ function SearchHighlightsResults() {
 
   return (
     <div>
-      <Link
-        to="/"
-        className="text-xl text-gray-100 underline underline-offset-2 hover:text-indigo-200"
-      >
-        ← Back to home
-      </Link>
+      <NavigateLink to="/" text="Back to home" />
       <div className="my-5">
         <h3 className="my-3 text-2xl font-semibold">
           Highlights containing "{query}"

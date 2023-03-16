@@ -2,6 +2,7 @@ import { useParams, Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { getReadingBook } from "../services/readingBooks";
 import BookDetailsSkeleton from "../components/Skeleton/BookDetailsSkeleton";
+import NavigateLink from "../components/NavigateLink";
 
 function ReadingBook() {
   const params = useParams();
@@ -18,12 +19,7 @@ function ReadingBook() {
 
   return (
     <div>
-      <Link
-        to="/"
-        className="text-xl text-gray-100 underline underline-offset-2 hover:text-indigo-200"
-      >
-        ← Back to all books
-      </Link>
+      <NavigateLink to="/" text="Back to home" />
       <div className="mt-5 text-center">
         {isLoading && <BookDetailsSkeleton />}
         {isError && <p>Error</p>}

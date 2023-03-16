@@ -1,14 +1,9 @@
-import { Link } from "react-router-dom";
+import NavigateLink from "../components/NavigateLink";
 
 function NotFound() {
   return (
     <div>
-      <Link
-        to="/"
-        className="text-xl text-gray-100 underline hover:text-indigo-200"
-      >
-        ← Back home
-      </Link>
+      <NavigateLink to="/" text="Back to home" />
       <div className="mt-5 text-center">
         <h2 className="mt-5 text-3xl font-semibold">Page Not Found</h2>
       </div>

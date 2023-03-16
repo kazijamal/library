@@ -7,6 +7,7 @@ import moment from "moment";
 import BookDetailsSkeleton from "../components/Skeleton/BookDetailsSkeleton";
 import HighlightListSkeleton from "../components/Skeleton/HighlightListSkeleton";
 import { Highlight as HighlightType } from "@prisma/client";
+import NavigateLink from "../components/NavigateLink";
 
 function FinishedBook() {
   const params = useParams();
@@ -32,12 +33,7 @@ function FinishedBook() {
 
   return (
     <div>
-      <Link
-        to="/"
-        className="text-xl text-gray-100 underline underline-offset-2 hover:text-indigo-200"
-      >
-        ← Back to all books
-      </Link>
+      <NavigateLink to="/" text="Back to home" />
       <div className="mt-5 text-center">
         {finishedBookIsLoading && <BookDetailsSkeleton />}
         {finishedBookIsError && <p>Error</p>}

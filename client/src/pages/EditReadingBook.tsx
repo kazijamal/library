@@ -8,6 +8,7 @@ import {
 } from "../services/readingBooks";
 import { ScaleLoader } from "react-spinners";
 import BookDetailsSkeleton from "../components/Skeleton/BookDetailsSkeleton";
+import NavigateLink from "../components/NavigateLink";
 
 function EditReadingBook() {
   const navigate = useNavigate();
@@ -55,12 +56,7 @@ function EditReadingBook() {
 
   return (
     <div>
-      <Link
-        to="/dashboard"
-        className="text-xl text-gray-100 underline underline-offset-2 hover:text-indigo-200"
-      >
-        ← Back to dashboard
-      </Link>
+      <NavigateLink to="/dashboard" text="Back to dashboard" />
       <div className="mt-5 text-center">
         {isLoading && <BookDetailsSkeleton />}
         {isError && <p>Error</p>}

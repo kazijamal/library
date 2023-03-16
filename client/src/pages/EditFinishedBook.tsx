@@ -6,6 +6,7 @@ import HighlightsForm from "../components/HighlightsForm";
 import { ScaleLoader } from "react-spinners";
 import moment from "moment";
 import BookDetailsSkeleton from "../components/Skeleton/BookDetailsSkeleton";
+import NavigateLink from "../components/NavigateLink";
 
 function EditFinishedBook() {
   const navigate = useNavigate();
@@ -46,12 +47,7 @@ function EditFinishedBook() {
 
   return (
     <div>
-      <Link
-        to="/dashboard"
-        className="text-xl text-gray-100 underline underline-offset-2 hover:text-indigo-200"
-      >
-        ← Back to dashboard
-      </Link>
+      <NavigateLink to="/dashboard" text="Back to dashboard" />
       <div className="mt-5 text-center">
         {finishedBookIsLoading && <BookDetailsSkeleton />}
         {finishedBookIsError && <p>Error</p>}
