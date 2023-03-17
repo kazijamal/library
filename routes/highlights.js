@@ -27,6 +27,7 @@ router.get("/finishedbook/:finishedBookId", async (req, res) => {
   const { finishedBookId } = req.params;
   const highlights = await prisma.highlight.findMany({
     where: { finishedBookId: Number(finishedBookId) },
+    orderBy: [{ location: "asc" }],
   });
   res.json(highlights);
 });
