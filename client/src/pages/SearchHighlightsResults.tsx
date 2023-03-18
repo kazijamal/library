@@ -1,12 +1,18 @@
-import { useSearchParams, Link } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { searchHighlights } from "../services/highlights";
 import Highlight from "../components/Highlight";
 import HighlightListSkeleton from "../components/Skeleton/HighlightListSkeleton";
+import { Highlight as HighlightType, FinishedBook } from "@prisma/client";
+import NavigateLink from "../components/NavigateLink";
+
+type HighlightWithBook = HighlightType & {
+  finishedBook: FinishedBook;
+};
 
 function SearchHighlightsResults() {
   const [searchParams] = useSearchParams();
-  const query = searchParams.get("q");
+  const query = searchParams.get("q") ?? "";
 
   const {
     isLoading,
@@ -19,12 +25,7 @@ function SearchHighlightsResults() {
 
   return (
     <div>
-      <Link
-        to="/"
-        className="text-xl text-gray-100 underline underline-offset-2 hover:text-indigo-200"
-      >
-        ← Back to home
-      </Link>
+      <NavigateLink to="/" text="Back to home" />
       <div className="my-5">
         <h3 className="my-3 text-2xl font-semibold">
           Highlights containing "{query}"
@@ -38,7 +39,7 @@ function SearchHighlightsResults() {
         ) : (
           highlights && (
             <div className="m-auto w-full text-left md:w-3/4">
-              {highlights.map((highlight) => (
+              {highlights.map((highlight: HighlightWithBook) => (
                 <Highlight
                   key={highlight.id}
                   highlight={highlight}

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useParams, Link, useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import {
   getReadingBook,
@@ -8,10 +8,12 @@ import {
 } from "../services/readingBooks";
 import { ScaleLoader } from "react-spinners";
 import BookDetailsSkeleton from "../components/Skeleton/BookDetailsSkeleton";
+import NavigateLink from "../components/NavigateLink";
 
 function EditReadingBook() {
   const navigate = useNavigate();
-  const { id } = useParams();
+  const params = useParams();
+  const id = Number(params.id);
   const [dateFinished, setDateFinished] = useState("");
 
   const queryClient = useQueryClient();
@@ -43,23 +45,18 @@ function EditReadingBook() {
     },
   });
 
-  const handleMarkReadingBookFinished = (e) => {
+  const handleMarkReadingBookFinished = (e: React.FormEvent) => {
     e.preventDefault();
     markReadingBookFinishedMutation.mutate({ id, dateFinished });
   };
 
-  const handleDeleteReadingBook = (id) => {
+  const handleDeleteReadingBook = (id: number) => {
     deleteReadingBookMutation.mutate({ id });
   };
 
   return (
     <div>
-      <Link
-        to="/dashboard"
-        className="text-xl text-gray-100 underline underline-offset-2 hover:text-indigo-200"
-      >
-        ← Back to dashboard
-      </Link>
+      <NavigateLink to="/dashboard" text="Back to dashboard" />
       <div className="mt-5 text-center">
         {isLoading && <BookDetailsSkeleton />}
         {isError && <p>Error</p>}

@@ -1,6 +1,14 @@
 import HighlightSkeleton from "./HighlightSkeleton";
 
-function HighlightListSkeleton({ numHighlights, includeBook }) {
+type HighlightListSkeletonProps = {
+  numHighlights: number;
+  includeBook: boolean;
+};
+
+function HighlightListSkeleton({
+  numHighlights,
+  includeBook,
+}: HighlightListSkeletonProps) {
   return (
     <div className="m-auto w-full text-left md:w-3/4">
       {[...Array(numHighlights).keys()].map((n) => (

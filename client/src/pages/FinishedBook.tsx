@@ -1,4 +1,4 @@
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { getFinishedBook } from "../services/finishedBooks";
 import { getFinishedBookHighlights } from "../services/highlights";
@@ -6,9 +6,12 @@ import Highlight from "../components/Highlight";
 import moment from "moment";
 import BookDetailsSkeleton from "../components/Skeleton/BookDetailsSkeleton";
 import HighlightListSkeleton from "../components/Skeleton/HighlightListSkeleton";
+import { Highlight as HighlightType } from "@prisma/client";
+import NavigateLink from "../components/NavigateLink";
 
 function FinishedBook() {
-  const { id } = useParams();
+  const params = useParams();
+  const id = Number(params.id);
 
   const {
     isLoading: finishedBookIsLoading,
@@ -30,12 +33,7 @@ function FinishedBook() {
 
   return (
     <div>
-      <Link
-        to="/"
-        className="text-xl text-gray-100 underline underline-offset-2 hover:text-indigo-200"
-      >
-        ← Back to all books
-      </Link>
+      <NavigateLink to="/" text="Back to home" />
       <div className="mt-5 text-center">
         {finishedBookIsLoading && <BookDetailsSkeleton />}
         {finishedBookIsError && <p>Error</p>}
@@ -84,7 +82,7 @@ function FinishedBook() {
         ) : (
           highlights && (
             <div className="m-auto w-full text-left md:w-3/4">
-              {highlights.map((highlight) => (
+              {highlights.map((highlight: HighlightType) => (
                 <Highlight
                   key={highlight.id}
                   highlight={highlight}

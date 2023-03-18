@@ -2,8 +2,13 @@ import { useQuery } from "@tanstack/react-query";
 import { getFinishedBooks } from "../services/finishedBooks";
 import BookListSkeleton from "./Skeleton/BookListSkeleton";
 import BookCard from "./BookCard";
+import { FinishedBook } from "@prisma/client";
 
-function FinishedBookList({ dashboard }) {
+type FinishedBookListProps = {
+  dashboard: boolean;
+};
+
+function FinishedBookList({ dashboard }: FinishedBookListProps) {
   const {
     isLoading,
     isError,
@@ -20,7 +25,7 @@ function FinishedBookList({ dashboard }) {
       {isError && <p>Error</p>}
       {finishedBooks && (
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
-          {finishedBooks.map((finishedBook) => (
+          {finishedBooks.map((finishedBook: FinishedBook) => (
             <BookCard
               key={finishedBook.id}
               book={finishedBook}

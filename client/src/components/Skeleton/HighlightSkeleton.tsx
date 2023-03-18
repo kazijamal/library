@@ -1,4 +1,8 @@
-function HighlightSkeleton({ includeBook }) {
+type HighlightSkeletonProps = {
+  includeBook: boolean;
+};
+
+function HighlightSkeleton({ includeBook }: HighlightSkeletonProps) {
   return (
     <div className="animate-pulse">
       <div className="mx-2 mt-5 mb-2 rounded-lg bg-indigo-500/25 p-3">
