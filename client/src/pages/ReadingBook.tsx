@@ -1,4 +1,4 @@
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { getReadingBook } from "../services/readingBooks";
 import BookDetailsSkeleton from "../components/Skeleton/BookDetailsSkeleton";
