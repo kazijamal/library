@@ -76,4 +76,15 @@ router.post("/upload", upload.single("highlights-file"), async (req, res) => {
   res.json({ finishedBookId });
 });
 
+// delete highlights for finished book with id
+router.delete("/finishedbook/:id", async (req, res) => {
+  const { id } = req.params;
+  const deletedHighlights = await prisma.highlight.deleteMany({
+    where: {
+      finishedBookId: Number(id),
+    },
+  });
+  res.json(deletedHighlights);
+});
+
 module.exports = router;
