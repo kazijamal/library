@@ -1,7 +1,10 @@
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { getFinishedBook, deleteFinishedBook } from "../services/finishedBooks";
-import { getFinishedBookHighlights } from "../services/highlights";
+import {
+  getFinishedBookHighlights,
+  deleteHighlightsForFinishedBook,
+} from "../services/highlights";
 import HighlightsForm from "../components/HighlightsForm";
 import { ScaleLoader } from "react-spinners";
 import moment from "moment";
@@ -41,8 +44,21 @@ function EditFinishedBook() {
     },
   });
 
+  const deleteHighlightsForFinishedBookMutation = useMutation({
+    mutationFn: deleteHighlightsForFinishedBook,
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: ["finished-book-highlights", id],
+      });
+    },
+  });
+
   const handleDeleteFinishedBook = (id: number) => {
     deleteFinishedBookMutation.mutate({ id });
+  };
+
+  const handleDeleteHighlightsForFinishedBook = (id: number) => {
+    deleteHighlightsForFinishedBookMutation.mutate({ id });
   };
 
   return (
@@ -92,27 +108,45 @@ function EditFinishedBook() {
             <HighlightsForm finishedBookId={id} />
           ) : (
             highlights && (
-              <div className="my-3">
-                <Link
-                  to={`/finishedbooks/${finishedBook.id}`}
-                  className="rounded bg-green-500/50 py-2 px-4 font-bold text-white hover:bg-green-700/50"
-                >
-                  View Highlights
-                </Link>
-              </div>
+              <>
+                <div className="my-3">
+                  <Link
+                    to={`/finishedbooks/${finishedBook.id}`}
+                    className="rounded bg-green-500/50 py-2 px-4 font-bold text-white hover:bg-green-700/50"
+                  >
+                    View Highlights
+                  </Link>
+                </div>
+                <div className="my-3">
+                  {deleteHighlightsForFinishedBookMutation.isLoading ? (
+                    <ScaleLoader></ScaleLoader>
+                  ) : (
+                    <button
+                      onClick={() =>
+                        handleDeleteHighlightsForFinishedBook(finishedBook.id)
+                      }
+                      className="rounded bg-red-500/50 py-2 px-4 font-bold text-white hover:bg-red-700/50"
+                    >
+                      Delete Highlights
+                    </button>
+                  )}
+                </div>
+              </>
             )
           )}
 
-          {deleteFinishedBookMutation.isLoading ? (
-            <ScaleLoader></ScaleLoader>
-          ) : (
-            <button
-              onClick={() => handleDeleteFinishedBook(finishedBook.id)}
-              className="rounded bg-red-500/50 py-2 px-4 font-bold text-white hover:bg-red-700/50"
-            >
-              Delete Finished Book
-            </button>
-          )}
+          <div className="my-3">
+            {deleteFinishedBookMutation.isLoading ? (
+              <ScaleLoader></ScaleLoader>
+            ) : (
+              <button
+                onClick={() => handleDeleteFinishedBook(finishedBook.id)}
+                className="rounded bg-red-500/50 py-2 px-4 font-bold text-white hover:bg-red-700/50"
+              >
+                Delete Finished Book
+              </button>
+            )}
+          </div>
         </div>
       </div>
     </div>

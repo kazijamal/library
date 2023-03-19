@@ -21,3 +21,11 @@ export async function getRandomHighlights(count: number) {
 export async function searchHighlights(query: string) {
   return axios.get(`/api/highlights/search?q=${query}`).then((res) => res.data);
 }
+
+export async function deleteHighlightsForFinishedBook(finishedBook: {
+  id: number;
+}) {
+  return axios
+    .delete(`/api/highlights/finishedbook/${finishedBook.id}`)
+    .then((res) => res);
+}
