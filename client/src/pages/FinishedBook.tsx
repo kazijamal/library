@@ -72,24 +72,39 @@ function FinishedBook() {
             </p>
           </>
         )}
-        <h3 className="mb-5 text-2xl font-semibold">Highlights</h3>
+
         {highlightsIsLoading && (
-          <HighlightListSkeleton numHighlights={5} includeBook={false} />
+          <>
+            <div className="mx-auto my-3 h-6 w-36 rounded-full bg-gray-500"></div>
+            <HighlightListSkeleton numHighlights={5} includeBook={false} />
+          </>
         )}
+
         {highlightsIsError && <p>Error</p>}
+
         {highlights && highlights.length == 0 ? (
-          <p>No highlights for this book</p>
+          <>
+            <h3 className="mb-5 text-2xl font-semibold">
+              {highlights.length} Highlights
+            </h3>
+            <p>No highlights for this book</p>
+          </>
         ) : (
           highlights && (
-            <div className="m-auto w-full text-left md:w-3/4">
-              {highlights.map((highlight: HighlightType) => (
-                <Highlight
-                  key={highlight.id}
-                  highlight={highlight}
-                  includeBook={false}
-                />
-              ))}
-            </div>
+            <>
+              <h3 className="mb-5 text-2xl font-semibold">
+                {highlights.length} Highlights
+              </h3>
+              <div className="m-auto w-full text-left md:w-3/4">
+                {highlights.map((highlight: HighlightType) => (
+                  <Highlight
+                    key={highlight.id}
+                    highlight={highlight}
+                    includeBook={false}
+                  />
+                ))}
+              </div>
+            </>
           )
         )}
       </div>
