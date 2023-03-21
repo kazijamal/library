@@ -8,6 +8,7 @@ import BookDetailsSkeleton from "../components/Skeleton/BookDetailsSkeleton";
 import HighlightListSkeleton from "../components/Skeleton/HighlightListSkeleton";
 import { Highlight as HighlightType } from "@prisma/client";
 import NavigateLink from "../components/NavigateLink";
+import ScrollToTop from "react-scroll-up";
 
 function FinishedBook() {
   const params = useParams();
@@ -108,6 +109,25 @@ function FinishedBook() {
           )
         )}
       </div>
+
+      <ScrollToTop showUnder={600}>
+        <div className="rounded-full bg-gray-700 p-2 shadow-xl">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.75}
+            stroke="currentColor"
+            className="h-8 w-8"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M12 19.5v-15m0 0l-6.75 6.75M12 4.5l6.75 6.75"
+            />
+          </svg>
+        </div>
+      </ScrollToTop>
     </div>
   );
 }
