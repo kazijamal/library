@@ -1,9 +1,20 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
+import { useQuery } from "@tanstack/react-query";
+import { countHighlights } from "../services/highlights";
 
 function SearchHighlightsForm() {
   const navigate = useNavigate();
   const [query, setQuery] = useState("");
+
+  const {
+    isLoading,
+    isError,
+    data: numHighlights,
+  } = useQuery({
+    queryKey: ["num-highlights"],
+    queryFn: countHighlights,
+  });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -43,7 +54,9 @@ function SearchHighlightsForm() {
             onChange={(e) => setQuery(e.target.value)}
             value={query}
             className="block w-full rounded-lg bg-gray-800 p-4 pl-10 text-white placeholder-gray-400"
-            placeholder="Search highlights..."
+            placeholder={
+              isLoading ? "" : `Search ${numHighlights} highlights...`
+            }
             required
           />
           <button

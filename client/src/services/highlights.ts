@@ -18,6 +18,10 @@ export async function getRandomHighlights(count: number) {
   return axios.get(`/api/highlights/random/${count}`).then((res) => res.data);
 }
 
+export async function countHighlights() {
+  return axios.get("/api/highlights/count").then((res) => res.data);
+}
+
 export async function searchHighlights(query: string) {
   return axios.get(`/api/highlights/search?q=${query}`).then((res) => res.data);
 }

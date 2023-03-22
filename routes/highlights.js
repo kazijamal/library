@@ -43,6 +43,12 @@ router.get("/random/:count", async (req, res) => {
   res.json(randomHighlights);
 });
 
+// count highlights
+router.get("/count", async (req, res) => {
+  const count = await prisma.highlight.count();
+  res.json(count);
+});
+
 // search highlights with query
 router.get("/search", async (req, res) => {
   const { q } = req.query;
