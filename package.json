@@ -8,6 +8,9 @@
     "dev": "nodemon index.js",
     "build": "cd client && npm install --omit=dev && npm run build && npx prisma generate"
   },
+  "engines": {
+    "node": "24.x"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
