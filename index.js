@@ -27,7 +27,7 @@ app.use("/api/finishedbooks", finishedBookRoutes);
 app.use("/api/readingbooks", readingBookRoutes);
 app.use("/api/highlights", highlightRoutes);
 
-app.get("*", (req, res) => {
+app.get("/{*splat}", (req, res) => {
   res.sendFile(path.join(__dirname, "client", "build", "index.html"));
 });
 
